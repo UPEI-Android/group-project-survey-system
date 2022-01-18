@@ -9,9 +9,9 @@
     <title>Document</title>
 </head>
 <body  >
-    Login Page ss
-    <form >
-    <div class="form-group" class="bg-gray-300">
+    Login Page sssdads
+    <form style="width: 500px; margin: auto" >
+    <div class="form-group" >
         <label for="inputEmail">Email</label>
         <input type="email" class="form-control" id="inputEmail" placeholder="Email">
     </div>
