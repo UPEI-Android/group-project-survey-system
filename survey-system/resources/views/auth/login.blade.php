@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body  >
-    Login Page ss
-    <form >
-    <div class="form-group" class="bg-gray-300">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+@extends('layouts.app')
+@section('content')
+<div class="container">
+<form class="form-horizontal">
+    
+    <div class="form-group">
+    <label for="inputEmail3" class="col-xs-4 control-label">Email</label>
+    <div class="col-xs-3">
+      <input type="email" class="form-control" id="inputEmail3" >
+    </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    <label for="password" class="col-xs-4 control-label">Password</label>
+    <div class="col-xs-3">
+      <input type="email" class="form-control" id="password" >
     </div>
-    <div class="form-group">
-        <label class="form-check-label"><input type="checkbox"> Remember me</label>
     </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="col-xs-1 offset-5 btn btn-primary login">Sign in</button>
 </form>
-</body>
-</html>
+</div>
+@endsection
