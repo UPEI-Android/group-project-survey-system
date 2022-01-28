@@ -43,7 +43,7 @@ div.a {
     </div>
     <div class="form-group col-md-4">
     <label for="inputDateOfBirth4">Date of Birth</label>
-      <input type = "date" name = "date"> 
+      <input type = "date"class="form-control" id="inputDateOfBirth4">
     </div>
 </div>
 </br>
