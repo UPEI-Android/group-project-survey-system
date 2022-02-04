@@ -7,7 +7,7 @@
 div.a {
   position: relative;
   width: 800px;
-  height: 450px;
+  height: 510px;
   background: white;
 }
 
@@ -49,6 +49,24 @@ b, b:hover{
         }
     });
 });
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 </script>
 </head>
 
@@ -57,6 +75,7 @@ b, b:hover{
 </br>
 </br>
 <div class="container a">
+<form class="needs-validation" novalidate>
 
 <div class="row">
 <h2 class="form-group col-md-1 offset-2 text-nowrap"><small>Registration Form</small></h2>
@@ -71,24 +90,45 @@ b, b:hover{
             Looks good!
       </div>
       <div class="invalid-feedback">
-            Please add a name.
+            Please add your first name.
       </div>
     </div>
     <div class="form-group col-md-4">
       <label for="inputLastName4">Last Name</label>
-      <input type="lastname" class="form-control" id="inputLastName4" >
-    </div>
+      <input type="lastname" class="form-control" id="inputLastName4" required >
+    
+    <div class="valid-feedback">
+            Looks good!
+      </div>
+      <div class="invalid-feedback">
+            Please add your last name.
+      </div>
+      </div>
 </div>
 </br>
 
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
+      <input type="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control" id="inputEmail4" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+      <div class="valid-feedback feedback-pos">
+            Looks good!
+          </div>
+          <div class="invalid-feedback feedback-pos">
+            Please input valid email ID
+          </div>
     </div>
+
+
     <div class="form-group col-md-4">
     <label for="inputDateOfBirth4">Date of Birth</label>
-      <input type = "date"class="form-control" id="inputDateOfBirth4">
+      <input type = "date"class="form-control" id="inputDateOfBirth4" required>
+      <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please choose a date.
+          </div>
     </div>
 </div>
 </br>
@@ -96,11 +136,23 @@ b, b:hover{
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputPhoneNumber4">Phone Number</label>
-      <input type="phoneNumber" class="form-control" id="inputPhoneNumber4">
+      <input type="phoneNumber" class="form-control" id="inputPhoneNumber4" required minlength="10" maxlength="10">
+      <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please choose a valid telephone number(10 characters).
+          </div>
     </div>
     <div class="form-group col-md-4">
       <label for="inputAddress4">Address</label>
-      <input type="address" class="form-control" id="inputAddress4" >
+      <input type="address" class="form-control" id="inputAddress4" required>
+      <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please add an address.
+          </div>
     </div>
     </div>
     </br>
@@ -108,7 +160,13 @@ b, b:hover{
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputPhoneNumber4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input type="password" class="form-control" id="inputPassword4" required>
+      <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please add an address.
+          </div>
     </div>
     </div>
 
@@ -118,22 +176,7 @@ b, b:hover{
 <div class="row">
     <button type="submit" class="form-group col-md-2 offset-5 btn btn-primary submit" data-toggle="modal" data-target="#myModal">Submit</button>
 </div>
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  
-        <div class="modal-header">
-          <h4 class="modal-title">registration success</h4>
-          <button type="button" class="close" data-dismiss="modal"></button>
-        </div>
-  
-        <div class="modal-footer">
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/login" role="button">Login Page</a>
-          
-        </div>
-   
-      </div>
-    </div>
+</form>
   </div>
 </body>
 </html>
