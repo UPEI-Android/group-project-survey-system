@@ -50,7 +50,7 @@
     </style>
  </head>
 <body>
-<nav class="navbar navbar-custom" >
+<nav class="navbar navbar-custom" justify-content-center >
   <div class="custom-div">
     <h1 class="name">Survey System Tool</h1>
     <ul class="link-group">
