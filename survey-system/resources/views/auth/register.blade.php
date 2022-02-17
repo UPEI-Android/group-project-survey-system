@@ -3,7 +3,7 @@
 <html>
 <head>
 <style type="text/css">
-   body { background: 	#DDF3FF; }
+   body { background:   #DDF3FF; }
 div.a {
   position: relative;
   width: 800px;
@@ -75,8 +75,8 @@ b, b:hover{
 </br>
 </br>
 <div class="container a">
-<form class="needs-validation" novalidate>
-
+<form   action="register_post" method="post">
+@csrf
 <div class="row">
 <h2 class="form-group col-md-1 offset-2 text-nowrap"><small>Registration Form</small></h2>
 </div>
@@ -85,7 +85,7 @@ b, b:hover{
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputFirstname4">First Name</label>
-      <input type="firstname" class="form-control" id="inputFirstName4" required>
+      <input type="firstname" class="form-control" name="First_Name" id="inputFirstName4" required>
       <div class="valid-feedback">
             Looks good!
       </div>
@@ -95,7 +95,7 @@ b, b:hover{
     </div>
     <div class="form-group col-md-4">
       <label for="inputLastName4">Last Name</label>
-      <input type="lastname" class="form-control" id="inputLastName4" required >
+      <input type="lastname" class="form-control" name="Last_Name" id="inputLastName4" required >
     
     <div class="valid-feedback">
             Looks good!
@@ -110,7 +110,7 @@ b, b:hover{
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control" id="inputEmail4" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+      <input type="email" class="email white col-7 col-md-4 col-lg-7 ml-3 form-control" name="Email" id="inputEmail4" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
       <div class="valid-feedback feedback-pos">
             Looks good!
           </div>
@@ -122,7 +122,7 @@ b, b:hover{
 
     <div class="form-group col-md-4">
     <label for="inputDateOfBirth4">Date of Birth</label>
-      <input type = "date"class="form-control" id="inputDateOfBirth4" required>
+      <input type = "date"class="form-control" name="Date_of_Birth" id="inputDateOfBirth4" required>
       <div class="valid-feedback">
             Looks good!
           </div>
@@ -136,7 +136,7 @@ b, b:hover{
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputPhoneNumber4">Phone Number</label>
-      <input type="phoneNumber" class="form-control" id="inputPhoneNumber4" required minlength="10" maxlength="10">
+      <input type="phoneNumber" class="form-control" id="inputPhoneNumber4" name="Phone_Number" required minlength="10" maxlength="10">
       <div class="valid-feedback">
             Looks good!
           </div>
@@ -146,7 +146,7 @@ b, b:hover{
     </div>
     <div class="form-group col-md-4">
       <label for="inputAddress4">Address</label>
-      <input type="address" class="form-control" id="inputAddress4" required>
+      <input type="address" class="form-control" name="Address" id="inputAddress4" required>
       <div class="valid-feedback">
             Looks good!
           </div>
@@ -160,7 +160,7 @@ b, b:hover{
 <div class="row">
     <div class="form-group col-md-4 offset-2">
       <label for="inputPhoneNumber4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" required>
+      <input type="password" class="form-control" name="Password" id="inputPassword4" required>
       <div class="valid-feedback">
             Looks good!
           </div>
@@ -172,10 +172,10 @@ b, b:hover{
 
     </div>
 </br>
-
-<div class="row">
+<input type="submit" value="submit">
+<!-- <div class="row">
     <button type="submit" class="form-group col-md-2 offset-5 btn btn-primary submit" data-toggle="modal" data-target="#myModal">Submit</button>
-</div>
+</div> -->
 </form>
   </div>
 </body>
