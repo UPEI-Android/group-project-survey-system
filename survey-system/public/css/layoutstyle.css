@@ -2,7 +2,7 @@
 body {
   font-family: "Lato", monospace;
   /*This is to prove a point lol*/
-  background: url(background.jpeg) no-repeat center center fixed; 
+  /*background: url(background.jpeg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
