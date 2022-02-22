@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TempController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SurveyListController;
+use App\Http\Controllers\MakeSurveyController;
+use App\Http\Controllers\ProfileSettingsController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +30,10 @@ Route::get('/login', function () {
 
 
 
-Route::get('/home', [TempController::class, 'home'])->name('temp.home');
-Route::get('/survey_list', [TempController::class, 'survey_list'])->name('temp.survey_list');
-Route::get('/template', [TempController::class, 'template'])->name('temp.template');
-Route::get('/make_survey', [TempController::class, 'make_survey'])->name('temp.make_survey');
-Route::get('/profile_settings', [TempController::class, 'profile_settings'])->name('temp.profile_settings');
+Route::get('/home', [HomeController::class, 'home'])->name('home.home');
+Route::get('/survey_list', [SurveyListController::class, 'survey_list'])->name('surveylist.survey_list');
+
+Route::get('/template', [TemplateController::class, 'template'])->name('template.template');
+
+Route::get('/make_survey', [MakeSurveyController::class, 'make_survey'])->name('makesurvey.make_survey');
+Route::get('/profile_settings', [ProfileSettingsController::class, 'profile_settings'])->name('profilesettings.profile_settings');

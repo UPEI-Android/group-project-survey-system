@@ -22,11 +22,11 @@
 
 <div class="sidenav">
     
-        <a href="{{route('temp.home')}}">Home</a>
-        <a href="{{route('temp.survey_list')}}">Survey List</a>
-        <a href="{{route('temp.template')}}">Template Survey</a>
-        <a href="{{route('temp.make_survey')}}">Make Survey</a>
-        <a href="{{route('temp.profile_settings')}}">Profile Settings</a>
+        <a href="{{route('home.home')}}">Home</a>
+        <a href="{{route('surveylist.survey_list')}}">Survey List</a>
+        <a href="{{route('template.template')}}">Template Survey</a>
+        <a href="{{route('makesurvey.make_survey')}}">Make Survey</a>
+        <a href="{{route('profilesettings.profile_settings')}}">Profile Settings</a>
 </div>
 
 <div class="main">
