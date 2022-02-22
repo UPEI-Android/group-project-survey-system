@@ -1,0 +1,44 @@
+
+body {
+  font-family: "Lato", monospace;
+  /*This is to prove a point lol*/
+  /*background: url(background.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*This ends proving the point lolx2*/
+  background-color: lightblue; 
+
+}
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #12187D;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 30px 2px 30px 25px;
+  text-decoration: none;
+  font-size: 23px;
+  color: #FFFFFF;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #18a9d5;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 50px; 
+  padding: 0px 100px;
+  color: pink
+}
