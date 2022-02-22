@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TemplateController extends Controller
 {
-    public function template () {
+    public function index () {
         return view('template');
     }
 }

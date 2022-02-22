@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TempController extends Controller
 {
-    public function testing () {
+    public function index () {
         return view('welcome');
     }
 

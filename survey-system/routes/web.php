@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TempController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SurveyListController;
 use App\Http\Controllers\MakeSurveyController;
 use App\Http\Controllers\ProfileSettingsController;
 
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +23,22 @@ use App\Http\Controllers\ProfileSettingsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', function () {
-    return view('auth.login');
+    return view('layouts.app');
 });
 
 
 
-Route::get('/home', [HomeController::class, 'home'])->name('home.home');
-Route::get('/survey_list', [SurveyListController::class, 'survey_list'])->name('surveylist.survey_list');
 
-Route::get('/template', [TemplateController::class, 'template'])->name('template.template');
+Route::get('/home', [HomeController::class, 'index'])->name('home.home');
+Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist.survey_list');
 
-Route::get('/make_survey', [MakeSurveyController::class, 'make_survey'])->name('makesurvey.make_survey');
-Route::get('/profile_settings', [ProfileSettingsController::class, 'profile_settings'])->name('profilesettings.profile_settings');
+Route::get('/template', [TemplateController::class, 'index'])->name('template.template');
+
+Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey.make_survey');
+Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings.profile_settings');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

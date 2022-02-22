@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SurveyListController extends Controller
 {
-    public function survey_list (){
+    public function index (){
         return view('survey_list');
     }
 }
