@@ -27,7 +27,7 @@
         <a href="{{route('template.template')}}">Template Survey</a>
         <a href="{{route('makesurvey.make_survey')}}">Make Survey</a>
         <a href="{{route('profilesettings.profile_settings')}}">Profile Settings</a>
-        <a href=>Log out</a>
+        <a href="{{ route('logout') }}"> Logout </a>
 </div>
 
 <div class="main">
