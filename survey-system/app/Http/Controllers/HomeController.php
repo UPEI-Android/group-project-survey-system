@@ -12,13 +12,4 @@ class HomeController extends Controller
         return view('home');
     }
 
-
-
-    public function logout(){
-        \Session::flush();
-        \Auth::logout();
-        return redirect('');
-
-
-}
 }

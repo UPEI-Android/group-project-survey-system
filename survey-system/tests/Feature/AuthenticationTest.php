@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenticationTest extends TestCase
 {
@@ -13,15 +14,25 @@ class AuthenticationTest extends TestCase
      *
      * @return void
      */
-    // public function test_login()
-    // {
-    //     $response = $this->post('/login',[
-    //         'email' => 'khph1222@gmail.com',
-    //         'password' => 'khang1'
-    //     ]);
+    public function test_login()
+    {
+        $response = $this->post('/login',[
+            'email' => 'testing22122@gmail.com',
+            'password' => 'khang1'
+        ]);
 
-    //     $response->assertRedirect('/home');
-    // }
+        $response->assertRedirect('/home');
+        $this->assertTrue(Auth::check());
+
+    }
+    public function test_logout()
+    {
+        $response = $this->get('/logout');
+
+        // $response->assertRedirect('/home');
+        $this->assertFalse(Auth::check());
+
+    }
     public function test_register()
     {
         
