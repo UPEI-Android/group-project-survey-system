@@ -19,12 +19,12 @@ class ProfileSettingsController extends Controller
             error_log('here');
         if(!Auth::check()){
             $request->session()->flash('alert', 'User is not authenticated');
+            return redirect()->route('login');
         }
         else{   
             $profile = Auth::user();
             $profile->first_name = $request->input('First_Name','');
             $profile->last_name = $request->input('Last_Name','');
-            $profile->email = $request->input('Email','');
             $profile->DOB = $request->input('Date_of_Birth','');
             $profile->phone = $request->input('Phone_Number','');
             $profile->address = $request->input('Address','');

@@ -25,10 +25,9 @@ class RegisterController extends Controller
        
         $profile = new User;
         $user_data = $profile->where('Email',$request->input('Email',''))->first();
-        error_log($user_data);
         if (!empty($user_data)){
-            echo '<script>alert("Email already exists");location="'.$_SERVER['HTTP_REFERER'].'"</script>';exit;
-            abort(403, 'Unauthorized action.');
+            return redirect()->route('register')->with('alert-class', 'There exists an account with this email!');
+
         }
         else{
             $profile->first_name = $request->input('First_Name','');
@@ -45,8 +44,8 @@ class RegisterController extends Controller
                 return redirect()->route('login');
     
             }else{
-                echo '<script>alert("Failed to add!");location="'.$_SERVER['HTTP_REFERER'].'"</script>';
-                return redirect()->route('register');
+                // echo '<script>alert("Failed to add!");location="'.$_SERVER['HTTP_REFERER'].'"</script>';
+                return redirect()->route('register')->with('alert-class', 'Failed to register!');
             }
         }
        

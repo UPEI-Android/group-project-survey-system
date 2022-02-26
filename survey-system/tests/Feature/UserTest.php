@@ -17,19 +17,41 @@ class UserTest extends TestCase
      */
     public function test_profile()
     {
-         $this->post('/login',[
-            'email' => 'testing22122@gmail.com',
-            'password' => 'khang1'
-        ]);
-        $profile = DB::table('profiles')->where('email', 'testing22122@gmail.com')->get()->first();
-        $response = $this->post('/profile-settings',[
-            'Email' => 'testing22122@gmail.com',
-            'First_Name' => 'Mary3',
+        $response = $this->post('/register',[
+            'Email' => 'profile@gmail.com',
+            'Password' => 'khang1',
+            'First_Name' => 'Mary1',
             'Last_Name' => 'Doe',
             'Date_of_Birth' => '2001-03-12',
             'Phone_Number' => '9029929999',
             'Address' => '22 ABC Street'
         ]);
-       $this->assertEquals('Mary3', $profile->first_name);
+        $response = $this->post('/login',[
+            'email' => 'profile@gmail.com',
+            'password' => 'khang1'
+        ]);
+        $response = $this->post('/profile-settings',[
+            'First_Name' => 'New',
+            'Last_Name' => 'Doe',
+            'Date_of_Birth' => '2001-03-12',
+            'Phone_Number' => '9029929999',
+            'Address' => '22 ABC Street'
+        ]);
+        $profile = DB::table('profiles')->where('email', 'profile@gmail.com')->get()->first();
+
+       $this->assertEquals('New', $profile->first_name);
+
+    }
+    public function test_profile_fail()
+    {
+        $response = $this->get('/logout');
+        $response = $this->post('/profile-settings',[
+            'First_Name' => 'New',
+            'Last_Name' => 'Doe',
+            'Date_of_Birth' => '2001-03-12',
+            'Phone_Number' => '9029929999',
+            'Address' => '22 ABC Street'
+        ]);
+        $response->assertRedirect('/login');
     }
 }
