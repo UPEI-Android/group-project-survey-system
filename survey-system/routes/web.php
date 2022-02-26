@@ -9,6 +9,8 @@ use App\Http\Controllers\ProfileSettingsController;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -29,17 +31,19 @@ Route::get('/', function () {
 
 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home.home');
-Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist.survey_list');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist');
 
-Route::get('/template', [TemplateController::class, 'index'])->name('template.template');
+Route::get('/template', [TemplateController::class, 'index'])->name('template');
 
-Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey.make_survey');
-Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings.profile_settings');
+Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
+Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings');
+Route::post('/profile-settings', [ProfileSettingsController::class, 'update'])->name('profilesettings');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('logout',[HomeController::class,'logout'])->name('logout');
+Route::get('/logout',[LogoutController::class,'index'])->name('logout');

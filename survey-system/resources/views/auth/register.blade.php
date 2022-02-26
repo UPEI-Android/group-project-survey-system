@@ -77,6 +77,11 @@ b, b:hover{
 <div class="container a">
 <form method="POST" action="{{ route('register') }}">
 @csrf
+@if(session()->has('alert-class'))
+    <div class="alert alert-danger alert-dismissible">
+         {{ session()->get('alert-class') }}
+    </div>
+@endif
 <div class="row">
 <h2 class="form-group col-md-1 offset-2 text-nowrap"><small>Registration Form</small></h2>
 </div>
