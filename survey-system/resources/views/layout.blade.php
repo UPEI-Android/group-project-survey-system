@@ -30,10 +30,10 @@
         <a href="{{ route('logout') }}"> Logout </a>
 </div>
 
-<div class="main">
+<!--<div class="main">
   <h2>Dashboard bruh this should be removed</h2>
 </div>
-
+-->
 <div>       
     @yield('content')
 </div>
