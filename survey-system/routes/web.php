@@ -28,6 +28,16 @@ Route::get('/', function () {
 
 
 
+Route::group(['middleware'=>'guest'],function(){
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+});
+
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.home');
 Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist.survey_list');
@@ -36,10 +46,9 @@ Route::get('/template', [TemplateController::class, 'index'])->name('template.te
 
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey.make_survey');
 Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings.profile_settings');
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('logout',[HomeController::class,'logout'])->name('logout');
+
+
+
+});
