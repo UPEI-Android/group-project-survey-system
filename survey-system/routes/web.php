@@ -47,3 +47,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
+
