@@ -1,21 +1,33 @@
+
 @extends('layouts.app')
 @section('content')
-<div class="container">
-<form class="form-horizontal">
-    
-    <div class="form-group">
-    <label for="inputEmail3" class="col-xs-4 control-label">Email</label>
-    <div class="col-xs-3">
-      <input type="email" class="form-control" id="inputEmail3" >
+@if(session()->has('alert-class'))
+    <div class="alert alert-danger alert-dismissible">
+         {{ session()->get('alert-class') }}
     </div>
-    </div>
-    <div class="form-group">
-    <label for="password" class="col-xs-4 control-label">Password</label>
-    <div class="col-xs-3">
-      <input type="email" class="form-control" id="password" >
-    </div>
-    </div>
-    <button type="submit" class="col-xs-1 offset-5 btn btn-primary login">Sign in</button>
-</form>
-</div>
-@endsection
+@endif
+
+   <body class="text-center"> 
+    <form class="form-signin" method="POST" action="{{ route('login') }}">
+      @csrf
+        <img class="mb-4" src="Vector.svg" alt="" width="150" height="150" >
+      <h1 class="h3 mb-3 font-weight-normal">User Login </h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="email"  id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      </p>
+     
+
+   
+   
+    </form>
+</body>
+    @endsection
+
