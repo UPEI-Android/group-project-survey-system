@@ -12,7 +12,10 @@ class ProfileSettingsController extends Controller
             // Session::flash('alert-class', 'Invalid login details'); 
         // }
         // dd(Session::all());
-
+        if(!Auth::check()){
+            Session::flash('alert', 'User is not authenticated');
+            return redirect()->route('login');
+        }
         return view('profile_settings');
     }
     public function update(Request $request){
