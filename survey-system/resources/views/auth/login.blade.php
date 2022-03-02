@@ -1,7 +1,11 @@
 
 @extends('layouts.app')
 @section('content')
-
+@if(session()->has('alert-class'))
+    <div class="alert alert-danger alert-dismissible">
+         {{ session()->get('alert-class') }}
+    </div>
+@endif
 
    <body class="text-center"> 
     <form class="form-signin" method="POST" action="{{ route('login') }}">
