@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileSettingsController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SurveyConsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('logout',[HomeController::class,'logout'])->name('logout');
+
+Route::post("users", [SurveyConsController::class, 'getData']);
+Route::view("/testing", "SurveyCons");

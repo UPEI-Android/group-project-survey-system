@@ -1,12 +1,3 @@
-@extends('layout')
-
-@section('title', 'Testing make_survey bruh')
-
-@section('content')
-
-<h1>{{$variable}}</h1>
-<h1 class="display-1 text-center">Create a survey</h1>
-<div style="margin-left: 300px">
 <h1>Survey Construction</h1>
 <form action="users" method="POST">
     <h3>Enter Survey Name</h3>
@@ -18,5 +9,3 @@
     <button type="submit"> Next</button>
 
 </form>
-</div>
-@endsection
