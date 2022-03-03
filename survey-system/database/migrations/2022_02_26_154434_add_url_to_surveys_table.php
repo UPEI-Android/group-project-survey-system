@@ -26,7 +26,8 @@ class AddUrlToSurveysTable extends Migration
      */
     public function down()
     {
-        Schema::table('surveys', function (Blueprint $table) {
+        Schema::table('surveys', function (Blueprint $table) 
+        {
             $table->dropColumn('url');
 
         });
