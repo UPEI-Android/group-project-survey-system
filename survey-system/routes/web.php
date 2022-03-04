@@ -37,6 +37,11 @@ Route::get('/survey-list', [SurveyListController::class, 'index'])->name('survey
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
 
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
+Route::post('/make-survey', [MakeSurveyController::class, 'firststore']);
+Route::get('/enter-question', [MakeSurveyController::class, 'index'])->name('enterquestion');
+Route::post('/enter-question', [MakeSurveyController::class, 'store']);
+
+
 Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings');
 Route::post('/profile-settings', [ProfileSettingsController::class, 'update'])->name('profilesettings');
 

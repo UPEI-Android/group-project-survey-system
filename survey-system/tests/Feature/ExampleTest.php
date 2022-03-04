@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ExampleTest extends TestCase
 {
@@ -12,10 +14,38 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_create_survey_example()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $response = $this->post('/make-survey',[
+            'name'=>'testSurvey',
+            'profiles_id'=>'1',
+            'url'=>'wwww.google.com'
+        ]);
+        
+        
+        //$question = DB::table('questions')->where('id', '123456')->get()->first();;
+        $this->assertEquals('testSurvey', $survey->name);
+        $this->assertEquals('1', $survey->profiles_id);
+        $this->assertEquals('www.google.com', $survey->url);
+       
     }
+
+    public function test_enter_question_example()
+    {
+        $response = $this->post('/enter-question',[
+            
+            'text'=>'what is your name',
+            'responseTyoe'=>'mutipleChoice',
+            'survey_id'=>'1'
+        ]);
+        
+        
+        //$question = DB::table('questions')->where('id', '123456')->get()->first();;
+
+        $this->assertEquals('what is your name', $question->text);
+        $this->assertEquals('mutipleChoice', $question->responseType);
+        $this->assertEquals('1', $question->survey_id);
+    }
+
+
 }
