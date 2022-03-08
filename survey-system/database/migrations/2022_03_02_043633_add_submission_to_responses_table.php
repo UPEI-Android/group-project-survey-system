@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUrlToSurveysTable extends Migration
+class AddSubmissionToResponsesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddUrlToSurveysTable extends Migration
      */
     public function up()
     {
-        Schema::table('surveys', function (Blueprint $table) {
-            $table->string('url', 256)->nullable();
-
+        Schema::table('responses', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 
@@ -26,10 +25,8 @@ class AddUrlToSurveysTable extends Migration
      */
     public function down()
     {
-        Schema::table('surveys', function (Blueprint $table) 
-        {
-            $table->dropColumn('url');
-
+        Schema::table('responses', function (Blueprint $table) {
+            //
         });
     }
 }
