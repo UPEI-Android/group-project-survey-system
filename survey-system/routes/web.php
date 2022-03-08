@@ -32,7 +32,9 @@ Route::get('/', function () {
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist');
+Route::get('/survey-detail', [SurveyListController::class, 'detail'])->name('surveydetail');
 
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
 
