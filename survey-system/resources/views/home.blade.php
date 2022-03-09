@@ -1,27 +1,6 @@
 @extends('layout')
 
 @section('title', 'Testing Dashboard bruh')
-<?php
-
-$user = 'root';
-$password = ''; 
-$database = 'SurveyToolDB'; 
-$servername='localhost:3306';
-$mysqli = new mysqli($servername, $user, 
-                $password, $database);
-if ($mysqli->connect_error) {
-    die('Connect Error (' . 
-    $mysqli->connect_errno . ') '. 
-    $mysqli->connect_error);
-}
-$id = 1;// Set the default user id is 1
-$sql = "SELECT * FROM profiles where id = $id;";
-$result = $mysqli->query($sql);
-
-$sql1 = "SELECT COUNT(id) AS surveyNumbers FROM surveys
-WHERE profiles_id=$id;";
-$result1 = $mysqli->query($sql1);
-?>
 
 <html>
 <head>
@@ -97,6 +76,7 @@ bottom: 20%;
 
 </style>
 <body>
+
 <div style="margin-left: 200px">
 <h1 class="display-1 text-center">Home</h1>
 <p class="d">
@@ -113,22 +93,17 @@ bottom: 20%;
 <p><span class="glyphicon glyphicon-user" style= "font-size:120px;"></span></p>
 </div>
 
-<?php
-while($row = mysqli_fetch_assoc($result))
-{
-?>
 
 <div class = "a">
-<p><span class='left'>Name:<?php echo $row['first_name'];echo '&nbsp';echo $row['last_name'];?> </span></p>
+@foreach ($users as $user)
+<p><span class='left'>Name: {{ $user->first_name}} {{ $user->last_name }}</span></p>
+@endforeach
 </br>
-<p><span class='left'>Email:<?php echo $row['email'];?></span></p>
-
-<?php
-while($row1 = mysqli_fetch_assoc($result1))
-{
-?>
+@foreach ($users as $user)
+<p><span class='left'>Email:{{ $user->email }}</span></p>
+@endforeach
 </br>
-<p><span class='left'>Surveys:<?php echo $row1['surveyNumbers'];?> </span></p>
+<p><span class='left'>Surveys: </span></p>
 </br>
 <p><span class='left'>Responses:</span></p>
 </div>
@@ -138,7 +113,7 @@ while($row1 = mysqli_fetch_assoc($result1))
 </div>
 
 <div class = "c">
-<p><span class='left'>Surveys:<?php echo $row1['surveyNumbers'];?> </span></p>
+<p><span class='left'>Surveys: </span></p>
 </br>
 <p><span class='left'>Responses:</span></p>
 </br>
@@ -162,18 +137,9 @@ while($row1 = mysqli_fetch_assoc($result1))
 
 
 
-
-<?php
-}
-}
-?>
 </body>
 </html>
 
-
-<?php
-$mysqli->close(); 
-?>
 @section('content')
 
 @endsection
