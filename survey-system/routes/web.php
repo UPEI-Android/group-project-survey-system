@@ -45,5 +45,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('logout',[HomeController::class,'logout'])->name('logout');
 
-Route::post("users", [SurveyConsController::class, 'getData']);
 Route::view("/testing", "SurveyCons");
