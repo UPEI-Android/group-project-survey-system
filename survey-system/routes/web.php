@@ -37,9 +37,18 @@ Route::get('/survey-list', [SurveyListController::class, 'index'])->name('survey
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
 
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
-Route::post('/make-survey', [MakeSurveyController::class, 'firststore']);
-Route::get('/enter-question', [MakeSurveyController::class, 'index'])->name('enterquestion');
-Route::post('/enter-question', [MakeSurveyController::class, 'store']);
+Route::post('/make-survey', [MakeSurveyController::class, 'store']);//这个你是用来干嘛的 存了数据继续跳回这个界面，然后按了完成这个按钮就跳到别的界面，
+Route::get('/adds_store', [MakeSurveyController::class, 'add'])->name('makesurvey2'); 
+Route::post('/adds_store', [MakeSurveyController::class, 'adds_store']);//第二个添加页面处理
+
+//Route::get('/enter-question', [MakeSurveyController::class, 'index'])->name('enterquestion');
+//Route::get('/enter-question', [MakeSurveyController::class, 'store']);
+
+//Route::get('/add', [MakeSurveyController::class, 'add']);
+//Route::get('/list', [MakeSurveyController::class, 'list']);
+
+//Route::get('/adds', [MakeSurveyController::class, 'adds']);//第二个添加页面
+
 
 
 Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings');

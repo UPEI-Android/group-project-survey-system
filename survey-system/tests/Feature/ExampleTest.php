@@ -34,17 +34,17 @@ class ExampleTest extends TestCase
     {
         $response = $this->post('/enter-question',[
             
-            'text'=>'what is your name',
+            'text'=>'123what is your name',
             'responseTyoe'=>'mutipleChoice',
             'survey_id'=>'1'
         ]);
         
         
-        //$question = DB::table('questions')->where('id', '123456')->get()->first();;
+        $question = DB::table('questions')->where('text', '123what is your name')->get()->first();;
 
         $this->assertEquals('what is your name', $question->text);
         $this->assertEquals('mutipleChoice', $question->responseType);
-        $this->assertEquals('1', $question->survey_id);
+        $this->assertEquals('123', $question->survey_id);
     }
 
 
