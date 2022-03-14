@@ -16,6 +16,10 @@ class CreateResponsesTable extends Migration
         Schema::create('responses', function (Blueprint $table) {
             $table->foreignId('survey_id')->constrained();
             $table->foreignId('question_id')->constrained();
+
+            $table->string('response_text');
+            $table->timestamp('created_at');
+
         });
     }
 
