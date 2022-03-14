@@ -39,6 +39,8 @@ Route::get('/template', [TemplateController::class, 'index'])->name('template');
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
 Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings');
 Route::post('/profile-settings', [ProfileSettingsController::class, 'update'])->name('profilesettings');
+Route::post('/profile-settings/changePassword', [ProfileSettingsController::class, 'changePassword'])->name('changePassword');
+// Route::get('/profile-settings/{id}', [ProfileSettingsController::class, 'index2'])->name('profilesettings');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);

@@ -5,7 +5,7 @@
     
 </style>
 <div style="margin-left: 200px">
-<h1 class="display-1 text-center">Home</h1>
+<h1 class="pageTitle">Home</h1>
 
 </div>
 @section('content')
