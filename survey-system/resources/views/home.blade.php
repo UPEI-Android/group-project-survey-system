@@ -78,7 +78,7 @@ bottom: 20%;
 <body>
 
 <div style="margin-left: 200px">
-<h1 class="display-1 text-center">Home</h1>
+<h1 class="pageTitle">Home</h1>
 <p class="d">
         <a href="#">
           <span class="glyphicon glyphicon-question-sign" style="font-size:36px;" ></span>

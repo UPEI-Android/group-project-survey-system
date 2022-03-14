@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserTest extends TestCase
 {
@@ -53,5 +54,27 @@ class UserTest extends TestCase
             'Address' => '22 ABC Street'
         ]);
         $response->assertRedirect('/login');
+    }
+    public function test_password_change()
+    {
+        $response = $this->post('/login',[
+            'email' => 'profile@gmail.com',
+            'password' => 'khang1'
+        ]);
+        // $response = $this->get('/logout');
+
+        $response = $this->post('/profile-settings/changePassword',[
+            'currentPassword' => 'khang1',
+            'newPassword' => 'khang2',
+            'confirmPassword' => 'khang2',
+        ]);
+        $profile = DB::table('profiles')->where('email', 'profile@gmail.com')->get()->first();
+        // $response->assertRedirect('/login');
+        $this->assertTrue(Hash::check('khang2', $profile->password));
+        $response = $this->post('/profile-settings/changePassword',[
+            'currentPassword' => 'khang2',
+            'newPassword' => 'khang1',
+            'confirmPassword' => 'khang1',
+        ]);
     }
 }
