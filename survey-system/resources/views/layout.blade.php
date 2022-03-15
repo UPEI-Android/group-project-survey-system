@@ -22,6 +22,7 @@
 
     <link rel="stylesheet" href="{{url('CSS/layoutstyle.css')}}">
     <link rel="stylesheet" href="{{url('CSS/profileSetting.css')}}">
+    <link rel="stylesheet" href="{{url('CSS/home.css')}}">
     <body>
 
 <div class="sidenav">
