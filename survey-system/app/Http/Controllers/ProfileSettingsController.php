@@ -32,9 +32,9 @@ class ProfileSettingsController extends Controller
         else{   
 
             $profile = Auth::user();
-            if($profile->first_name == $request->input('First_Name','') || $profile->last_name == $request->input('Last_Name','') 
-            || $profile->DOB == $request->input('Date_of_Birth','') || $profile->phone == $request->input('Phone_Number','') 
-            || $profile->address == $request->input('Address','')){
+            if($profile->first_name == $request->input('First_Name','') && $profile->last_name && $request->input('Last_Name','') 
+            && $profile->DOB && $request->input('Date_of_Birth','') && $profile->phone && $request->input('Phone_Number','') 
+            && $profile->address && $request->input('Address','')){
                 return back()->withErrors(['No changes were made']);
             }
             // $profile->first_name = $request->input('First_Name','');
