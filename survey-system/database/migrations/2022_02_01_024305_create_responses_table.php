@@ -14,6 +14,8 @@ class CreateResponsesTable extends Migration
     public function up()
     {
         Schema::create('responses', function (Blueprint $table) {
+            $table->id();//Id that we aint not gunna use
+
             $table->foreignId('survey_id')->constrained();
             $table->foreignId('question_id')->constrained();
 
