@@ -21,6 +21,7 @@ class CreateResponsesTable extends Migration
 
             $table->string('response_text');
             $table->timestamp('created_at');
+            $table->string('option')->nullable();
 
         });
     }
