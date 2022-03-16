@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\MyUrlController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,6 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () {
     return view('layouts.app');
 });
-
 
 
 
@@ -48,3 +47,5 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
+Route::get('/survey/{url}',[MyUrlController::class,'index2']);
+Route::get('/survey',[MyUrlController::class,'index2']);
