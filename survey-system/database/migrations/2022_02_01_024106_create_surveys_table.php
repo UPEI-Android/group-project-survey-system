@@ -18,6 +18,7 @@ class CreateSurveysTable extends Migration
             $table->string('name');
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
+            $table->string('survey_type');
         });
     }
 
