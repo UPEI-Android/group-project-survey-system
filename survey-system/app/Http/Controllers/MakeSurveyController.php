@@ -18,8 +18,7 @@ class MakeSurveyController extends Controller
     
     public function list ($name) {
 
-        //传过来的参数
-        //$name=$request->input('name','');
+        
         $survey = DB::table('surveys')->where('name', $name)->get()->first();;
         $survey_id=$survey->id;
         if(empty($survey_id)){
@@ -27,8 +26,7 @@ class MakeSurveyController extends Controller
         }else{
             $data = Question::where('survey_id',$survey_id)->get();
         }
-        return view('list_demo',compact('data'));//不是这个功能 你晚上有空吗 我先弄好 ok有的 OK 我弄好再问你
-    }
+        return view('list_demo',compact('data'));}
     
     public function index(){
         return view('make_survey');
@@ -56,12 +54,11 @@ class MakeSurveyController extends Controller
         }
     }*/
     
-    public function add(){
-        return view('add');
-    }
-
+   
+    /*
     public function adds_store(Request $request){ 
         $value=$request->input('sub','');
+        
         $question = new Question;
         
         $question->text = $request->input('text','');
@@ -72,10 +69,10 @@ class MakeSurveyController extends Controller
         //$newname = str_replace('"', '', (string)$name);
         
         $survey = DB::table('surveys')->where('name', $name)->get()->first();;
-        $question->survey_id = $survey->id;
+        
 
         //dd($survey_id);
-        //$question->survey_id =$survey->id;
+        $question->survey_id =$survey->id;
         
         $data = $question->save();
         if($data){
@@ -93,46 +90,60 @@ class MakeSurveyController extends Controller
         }else{
             echo('create survey erro');
         }
-    }
+    }*/
 
     public function store(Request $request){ 
-        $value=$request->input('sub','');
-        $question = new Question;
+        $survey = new Survey;
+       
         
-        
-        $question->text = $request->input('text','');
-        $question->responseType = $request->input('responseType','');
 
-        $name=$request->input('name','');
+        $survey->name = $request->input('surveyName','');
+        $numberOfQuestion = $request->input('numberOfQuestion','');
+        $profiles_id=Auth::id();
+        $survey->profiles_id = $profiles_id;
+        //dd($user);
+        $data1=$survey->save();
+
+
+        for($i=1;$i<=$numberOfQuestion;$i++){
+        $question = new Question;
+        $tem='text'.(string)$i;
+        $tem1='responseType'.(string)$i;
+        $question->text = $request->input($tem,'');
+        $question->responseType = $request->input($tem1,'');
+        $question->survey_id = $survey->id;
+        $data2=$question->save();
+       
+        if(!data2){
+            echo('save survey erro.');
+        }
+        }
+        
+        //$name=$request->input('name','');
 
         
         //dd($name);
-        $survey = DB::table('surveys')->where('name', $name)->get()->first();;
-       
-        $question->survey_id = $survey->id;
+        
         //$survey_id=$survey->id;
         
 
         //$question->survey_id = $request->input('survey_id','123');
         
-        $data = $question->save();
-        if($data){
+        //$data2= $question->save();
+        //dd($question);
+        if($data1&&$data2){
             $request->flash();
-            //echo($question);
-           // return view('btn');//可以了，这里 如果我要两个按钮 跳到不同页面呢 ，什么意思
-            // 就一个按钮是下一页 一个按钮是完成 就跟我发你的那个照片一样 按下一页就继续填问题 按完成就生成url。
-            // 你现在这里需要做的就是返回到页面上去，你在那个页面上写2个按钮就可以了。写2个a 那标
-            //那标签不是都是一样的动作吗 action 
-             if($value=='Next'){
+           
+             
 
                 
-                return view('add',compact('name'));
+                echo($survey);
+                echo($question);
                 // return redirect()->route('makesurvey2');
-             }
-             else{
+            
                 //return view('lis_demo',compact('name'));
-                return $this->list($name);
-             }
+                //return $this->list($name);
+             
              
 
         }else{
