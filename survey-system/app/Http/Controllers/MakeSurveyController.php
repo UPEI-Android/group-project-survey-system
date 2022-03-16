@@ -62,8 +62,6 @@ class MakeSurveyController extends Controller
 
     public function adds_store(Request $request){ 
         $value=$request->input('sub','');
-        //第二个添加处理、
-        //下面表面字段改一下，改到你想添加的表面，
         $question = new Question;
         
         $question->text = $request->input('text','');
@@ -72,9 +70,9 @@ class MakeSurveyController extends Controller
         
         $name=str_replace(['”',"“"], "", $name);
         //$newname = str_replace('"', '', (string)$name);
-        //dd($name);
-        $survey = DB::table('surveys')->where('name', $name)->get()->first();;
         
+        $survey = DB::table('surveys')->where('name', $name)->get()->first();;
+        $question->survey_id = $survey->id;
 
         //dd($survey_id);
         //$question->survey_id =$survey->id;
