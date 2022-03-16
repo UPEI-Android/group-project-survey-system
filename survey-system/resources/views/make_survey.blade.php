@@ -3,6 +3,8 @@
 @section('title', 'Testing make_survey bruh')
 
 @section('content')
+<div style="margin-left: 200px">
+<h1 class="pageTitle">Create a survey</h1>
 
 <h1>{{$variable}}</h1>
 <h1 class="display-1 text-center">Create a survey</h1>
@@ -18,5 +20,6 @@
     <button type="submit"> Next</button>
 
 </form>
+
 </div>
 @endsection

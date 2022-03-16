@@ -33,9 +33,9 @@ class LoginController extends Controller
         // login code 
         
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
-            return back()->with('status', 'Invalid login details');
+            return back()->with('alert-class', 'Invalid login details');
         }
-
-        return redirect()->route('dashboard');
+        
+        return redirect()->route('home');
     }
 }

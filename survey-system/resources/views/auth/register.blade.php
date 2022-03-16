@@ -9,17 +9,16 @@ div.a {
   width: 800px;
   height: 510px;
   background: white;
-}
+  text-align: center;
 
+}
 b, b:hover{
   color:#333
 }
-
 .modal {
   text-align: center;
   padding: 0!important;
 }
-
 .modal:before {
   content: '';
   display: inline-block;
@@ -27,7 +26,6 @@ b, b:hover{
   vertical-align: middle;
   margin-right: -4px; /* Adjusts for spacing */
 }
-
 .modal-dialog {
   display: inline-block;
   text-align: left;
@@ -49,7 +47,6 @@ b, b:hover{
         }
     });
 });
-
 (function() {
   'use strict';
   window.addEventListener('load', function() {
@@ -74,6 +71,7 @@ b, b:hover{
 </br>
 </br>
 </br>
+<div class="d-flex justify-content-center">
 <div class="container a">
 <form method="POST" action="{{ route('register') }}">
 @csrf
@@ -171,6 +169,8 @@ b, b:hover{
     </div>
 
     </div>
+</div>
+
 </br>
 <!-- <input type="submit" value="submit"> -->
     <div class="d-flex justify-content-center">
@@ -181,11 +181,3 @@ b, b:hover{
 </body>
 </html>
 @endsection
-
-
-
-
-
-
-
- 
