@@ -24,6 +24,7 @@ class CreateSurveysTable extends Migration
             $table->string('survey_type');
             $table->boolean('isActive')->default(false);
             $table->string('option')->nullable();
+            $table->string('url', 256)->nullable();
 
         });
     }
