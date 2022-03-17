@@ -24,8 +24,7 @@ class CreateProfilesTable extends Migration
             $table->string('password');
             $table->boolean('isVerified')->default(0);
             $table->boolean('isAdmin')->default(0);
-
-
+            $table->timestamp('lastLogin')->nullable();
         });
     }
 

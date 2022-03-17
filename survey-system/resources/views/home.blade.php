@@ -103,7 +103,7 @@
                 <div class="col-lg-3">
                     <div id="box5" class="box-part-1 text-center">
                     <span class="col-md-12 fs-3 text-center" style="position:absolute;top:4vh;left:0px;">Total number of responses</span>
-      <div class="col-md-12 text-center" style="font-size:2rem;position:absolute;top:7vh;left:0px;">456</div>
+      <div class="col-md-12 text-center" style="font-size:2rem;position:absolute;top:7vh;left:0px;">{{$responseCount}}</div>
                     </div>
                     <div id="box5" class="box-part-1 text-center">
                     <span class="col-md-12 fs-3 text-center" style="position:absolute;top:17vh;left:0px;">Number of responses since last login</span>

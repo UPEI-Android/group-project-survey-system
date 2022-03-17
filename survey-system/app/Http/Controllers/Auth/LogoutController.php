@@ -11,13 +11,8 @@ class LogoutController extends Controller
 {
     public function index()
     {
-<<<<<<< ML-Changes-to-DB
         Session::flush();
         Auth::logout();
-=======
-        \Session::flush();
-        \Auth::logout();
->>>>>>> dev
         return redirect('/');
     }
 

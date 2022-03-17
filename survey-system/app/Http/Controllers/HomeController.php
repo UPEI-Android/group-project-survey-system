@@ -17,12 +17,14 @@ class HomeController extends Controller
         $allSurveys = $surveyCount = DB::table('surveys')->where('profiles_id',$userId)->get();
         $surveyCount = $allSurveys->count();
         for($i = 0 ; $i<$surveyCount;$i++){
-            $questionArr = DB::table('questios')->where('survey_id',$allSurveys[$i]->id);
-            for($j = 0 ; $i<$questionArr->count();$j++){
+            $questionArr = DB::table('questions')->where('survey_id',1)->get();
+            for($j = 0 ; $j<$questionArr->count();$j++){
                 $numRes += DB::table('responses')->where('survey_id',$allSurveys[$i]->id)
-                ->andWhere('questions',$questionArr[$j])->count();
+                ->where('question_id',$questionArr[$j]->id)->get()->count();
                 
             }
+
+            // dd($numRes);
         }
 
         if(!$user){
@@ -33,7 +35,8 @@ class HomeController extends Controller
 
         return view('home', [
             'user' => $user,
-            'surveyCount' => $surveyCount
+            'surveyCount' => $surveyCount,
+            'responseCount' => $numRes
         ]);
     }
 }

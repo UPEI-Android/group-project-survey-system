@@ -21,8 +21,7 @@ class CreateResponsesTable extends Migration
             $table->foreignId('question_id')->constrained();
 
             $table->string('response_text');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->string('option')->nullable();
+            $table->timestamp('created_at');
 
         });
     }
