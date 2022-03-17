@@ -17,7 +17,8 @@ class HomeController extends Controller
         $allSurveys = $surveyCount = DB::table('surveys')->where('profiles_id',$userId)->get();
         $surveyCount = $allSurveys->count();
         for($i = 0 ; $i<$surveyCount;$i++){
-            $questionArr = DB::table('questions')->where('survey_id',1)->get();
+
+            $questionArr = DB::table('questions')->where('survey_id',$allSurveys[$i]->id)->get();
             for($j = 0 ; $j<$questionArr->count();$j++){
                 $numRes += DB::table('responses')->where('survey_id',$allSurveys[$i]->id)
                 ->where('question_id',$questionArr[$j]->id)->get()->count();

@@ -6,14 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\Models\Profile;
 
 class SurveyListController extends Controller
 {
     public function index (){
-        $uid=Auth::user()->id;
-        $survey_list = DB::table('surveys')->where('profiles_id',$uid)->get();
-        // print_r($survey_list);die;
-        return view('survey_list',compact('survey_list'));
+        $user = Auth::user();
+        $userId = $user->id;
+        $allSurveys = DB::table('surveys')->where('profiles_id',$userId)->get();
+        return view('survey_list', [
+            'user' => $user,
+            'allSurveys' => $allSurveys
+        ]);
     }
 
     public function detail(Request $request){
