@@ -21,6 +21,7 @@ class CreateSurveysTable extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->string('survey_type');
             $table->boolean('isActive')->default(false);
+            $table->string('option')->nullable();
 
         });
     }
