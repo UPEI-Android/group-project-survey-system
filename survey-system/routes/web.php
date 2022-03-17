@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SurveyConsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,9 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::view("/testing", "SurveyCons");
+Route::view('/survey', 'survey')->name('survey');
+
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
