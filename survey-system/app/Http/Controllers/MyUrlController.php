@@ -12,7 +12,7 @@ class MyUrlController extends Controller
         
     
     $id = DB::table('surveys')->where('url', $url)->value('id');
-    $questions=DB::table('questions')->where('survey_id', $id)->get('text');
+    $questions=DB::table('questions')->where('survey_id', $id)->get();
     $response=DB::table('questions')->where('survey_id', $id)->get('responseType');
     
     return view('survey', compact('response', 'questions'));
