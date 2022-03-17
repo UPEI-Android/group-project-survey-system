@@ -17,8 +17,6 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('text');
             $table->string('responseType');
-            $table->string('response_text');
-
         });
     }
 
