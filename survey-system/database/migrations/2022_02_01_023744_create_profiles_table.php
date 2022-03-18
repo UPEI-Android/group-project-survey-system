@@ -20,6 +20,12 @@ class CreateProfilesTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('DOB');
+            $table->string('address');
+            $table->string('password');
+            $table->boolean('isVerified')->default(0);
+            $table->boolean('isAdmin')->default(0);
+
+
         });
     }
 

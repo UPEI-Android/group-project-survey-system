@@ -12,13 +12,16 @@ div.a {
   text-align: center;
 
 }
+
 b, b:hover{
   color:#333
 }
+
 .modal {
   text-align: center;
   padding: 0!important;
 }
+
 .modal:before {
   content: '';
   display: inline-block;
@@ -26,6 +29,7 @@ b, b:hover{
   vertical-align: middle;
   margin-right: -4px; /* Adjusts for spacing */
 }
+
 .modal-dialog {
   display: inline-block;
   text-align: left;
@@ -47,6 +51,7 @@ b, b:hover{
         }
     });
 });
+
 (function() {
   'use strict';
   window.addEventListener('load', function() {

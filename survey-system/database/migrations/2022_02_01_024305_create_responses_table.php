@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateResponsesTable extends Migration
 {
@@ -14,8 +15,15 @@ class CreateResponsesTable extends Migration
     public function up()
     {
         Schema::create('responses', function (Blueprint $table) {
+            $table->id();//Id that we aint not gunna use
+
             $table->foreignId('survey_id')->constrained();
             $table->foreignId('question_id')->constrained();
+
+            $table->string('response_text');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('option')->nullable();
+
         });
     }
 

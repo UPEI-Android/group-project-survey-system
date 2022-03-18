@@ -33,11 +33,12 @@
 
 <div class="main">
   <!-- <h2>Dashboard bruh this should be removed</h2> -->
+    <div>       
+        @yield('content')
+    </div>
+
 </div>
 
-<div>       
-    @yield('content')
-</div>
 
 </body>
 </html> 
