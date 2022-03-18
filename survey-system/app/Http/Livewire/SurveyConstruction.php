@@ -20,15 +20,22 @@ class SurveyConstruction extends Component
     public $answer_type;
     
     public $answer_form;
-    //public $mcq=[];
+    public $option=[];
 
     public $totalQuestions;
     public $currentQuestion=1;
     public $answerType;//this is for local use, other answer_type is for database use
 
+    public $arrayForQuestionText;
+    public $arrayForAnswerType;
+    public $arrayForAnswerForm;
+    public $foo;
+
     public function mount(){
-        $this->answerType='none';//test this shit
+        $this->answerType='none';
         $this->currentQuestion=1;
+        $this->totalQuestions=1;
+        $this->foo=true;
     }
 
     public function render()
@@ -37,12 +44,15 @@ class SurveyConstruction extends Component
     }
 
     public function increaseQuestion(){
+        $this->storeData();
         $this->currentQuestion++;
         $this->totalQuestions++;
         //probably have to store the stuff, make a function to store variables in array
         $this->resetAnswerActive();
+        $this->answerType='noneTemp';
     }
-
+    
+    
     public function decreaseQuestion(){
         $this->currentQuestion--;
         if($this->currentQuestion <= 1){
@@ -52,61 +62,85 @@ class SurveyConstruction extends Component
     }
 
     public function numericAnswer(){
-        //$this->resetErrorBag();
         $this->answerType='numeric';
-        $this->currentQuestion++;
+        //$this->resetErrorBag();
+        //$this->currentQuestion++;
+        //$this->totalQuestions++;
     }
 
     public function textAnswer(){
+
         $this->answerType='text';
-        $this->currentQuestion++;
-        $this->totalQuestions++;
+        //$this->currentQuestion++;
+        //$this->totalQuestions++;
 
     }
     public function mcq1Answer(){
         $this->answerType='mcq1';
-        $this->currentQuestion++;
-        $this->totalQuestions++;
+        //$this->currentQuestion++;
+        //$this->totalQuestions++;
 
 
     }
     public function mcq2Answer(){
         $this->answerType='mcq2';
-        $this->currentQuestion++;
-        $this->totalQuestions++;
+        //$this->currentQuestion++;
+        //$this->totalQuestions++;
 
 
     }
 
     public function resetAnswerActive(){
-        //$this->storeData();
-        $this->reset();
-        $this->answerType='noneTemp';
-
+        $this->question_text=null;
+        $this->answer_type=null;
+        $this->answer_form=null;
+        //$this->answerType='noneTemp';
     }
 
     public function resetAnswerFinal(){
-        $this->answerType='none';
+        $this->reset();
     }
 
+    public $tempSurveyName;
+    public $tempSurveyType;
+    
     public function storeData(){
+        if($this->foo==true){//just so this goes in only once
+            $this->tempSurveyName=$this->survey_name;
+            $this->tempSurveyType=$this->survey_type;
+            $this->foo=false;
+        }
         //Here data will be stored temprarily in an object or array
+        $this->arrayForQuestionText=array(
+            $this->currentQuestion => $this->question_text//this should keep incrementing, so it'll be each question number and its texts
+        );
+        $this->arrayForAnswerType=array(
+            $this->currentQuestion=>$this->answerType
+        );
+        $this->arrayForAnswerForm=array(
+            $this->currentQuestion=>$this->answer_form
+        );
     }
 
+    public $valuesQuestionsTable=array();
     public function submit(){
 
         $valuesSurveysTable=array(
-            "name"=>$this->survey_name,
-            "survey_type"=>$this->survey_type,
+            "name"=>$this->tempSurveyName,
+            "survey_type"=>$this->tempSurveyType,
             //$this->url, This will be needed for generating a url to share the survey
             
         );
-
-        $valuesQuestionsTable=array(
-            "text"=>$this->question_text,
-            "responseType"=>$this->answerType,
-            
-        );
+        
+        
+        for($i = 1; $i<$this->totalQuestions; $i++){
+            $tempValue=$this->arrayForQuestionText[$i];
+            $this->valuesQuestionsTable=array(
+                "text"=>$tempValue,
+                "responseType"=>$this->answerType,
+                
+            );
+        }
 
         $valuesResponsesTable=array(
             "response_text"=>$this->answer_form,
@@ -114,10 +148,10 @@ class SurveyConstruction extends Component
         );
 
         Survey::insert($valuesSurveysTable);
-        Question::insert($valuesQuestionsTable);
+        Question::insert($this->valuesQuestionsTable);
         Response::insert($valuesResponsesTable);
 
-        $this->reset();
+        $this->resetAnswerFinal();
         $this->answerType='none';
     }
 }

@@ -6,7 +6,6 @@ body {
 }
 </style>
 <form>
-    {{--Step 1--}}
     @if($answerType == 'none')
     <div class="step-one">
         <div class="card">
@@ -64,10 +63,10 @@ body {
                     <div class="col-md-6">
                         <div class="form-group">
                         <label for=""> Multiple Choice Question with 1 answer </label>
-                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option1">
-                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option2">
-                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option3">
-                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option4">
+                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option[1]">
+                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option[2]">
+                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option[3]">
+                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option[4]">
                         </div>
                 </div>
             </div>
@@ -81,10 +80,10 @@ body {
                     <div class="col-md-6">
                         <div class="form-group">
                         <label for=""> Multiple Choice Question with multiple answer </label>
-                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option1">
-                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option2">
-                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option3">
-                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option4">
+                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option[1]">
+                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option[2]">
+                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option[3]">
+                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option[4]">
                         </div>
                     </div>
             </div>
@@ -93,7 +92,7 @@ body {
     @if($answerType == 'numeric')
     <div class="step-two">
         <div class="card">
-            <div class="card-header bg-primary text-white">they choose to pick numeric as an answer type</div>
+            <div class="card-header bg-primary text-white">This is just for you to view, Numeric Answer</div>
             <div class="card-body">
                 <div class="col-md-6">
                     <div class="col-md-6">
@@ -110,7 +109,7 @@ body {
     @if($answerType == 'text')
     <div class="step-three">
         <div class="card">
-            <div class="card-header bg-primary text-white">STEP3, say they choose to pick text as an answer type</div>
+            <div class="card-header bg-primary text-white">This is just for you to view, Text Answer</div>
             <div class="card-body">
                 <div class="col-md-6">
                     <div class="col-md-6">
@@ -127,7 +126,7 @@ body {
    
     @if($answerType == 'noneTemp')
     <div class="card">
-    <div class="card-header bg-primary text-white"> Total questions (<?php echo $currentQuestion ?>) New Question</div>
+    <div class="card-header bg-primary text-white"> Question number (<?php echo $totalQuestions?>)  Make a New Question</div>
     <div class="card-body">
                 <div class="col-md-8">
                     <div class="col-md-8">
