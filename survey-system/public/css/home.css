@@ -1,0 +1,98 @@
+span{
+    font-size:25px;
+}
+.price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+   }
+/* a{
+  text-decoration:none; 
+  color: #0062cc;
+  border-bottom:2px solid #0062cc;
+} */
+.userImg{
+    position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+top: 15vh;
+}
+.box{
+    padding:60px 0px;
+}
+.welcome{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 33vh;
+    color:  #999999;
+}
+.userName{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 38vh;
+    font-size: 3em;
+    /* color: #404040; */
+}
+.title{
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 43vh;
+        font-size: 1.5em;
+        color:  #808080;
+    
+}
+.userEmail{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 48vh;
+}
+.box-part{
+    background:#FFF;
+    border-radius:0;
+    padding:18.5vh 10vw;
+    margin:30px 0px 10px 20px;
+    text-align: center;
+}
+.box-part-1{
+    background:#FFF;
+    border-radius:0;
+    padding:5vh 10vw;
+    margin:30px 0px 10px 20px;
+    text-align: center;
+
+}
+.profile-box{
+    background:#FFF;
+    border-radius:0;
+    padding:39.5vh 20px;
+    margin:30px 0px 0 20px;
+    /* float: left; */
+    text-align: center;
+}
+.text{
+    margin:20px 0px;
+}
+
+.fa{
+     color:#4183D7;
+}
