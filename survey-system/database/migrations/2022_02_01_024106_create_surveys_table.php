@@ -17,7 +17,7 @@ class CreateSurveysTable extends Migration
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('profiles_id')->constrained();
+            //$table->foreignId('profiles_id')->constrained(); uncomment this once figured out
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->nullable();

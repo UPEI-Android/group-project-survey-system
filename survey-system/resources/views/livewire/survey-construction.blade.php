@@ -2,7 +2,7 @@
 Hello from  livewire
 <style>
 body {
-    background-image: linear-gradient(#33C4FF, #33F3FF);
+    background-image: linear-gradient(#1EABE4, #0D4AAF);
 }
 </style>
 <form>
@@ -12,8 +12,8 @@ body {
         <div class="card">
             <div class="card-header bg-primary text-white">Survey Name</div>
             <div class="card-body">
-                <div class="col-md-6">
-                    <div class="col-md-6">
+                <div class="col-md-8">
+                    <div class="col-md-8">
                         <div class="form-group">
                             <label for=""> Survey Name </label>
                             <input type="text" class="form-control" placeholder="Enter the name of the survey" wire:model="survey_name">
@@ -21,7 +21,7 @@ body {
                         </div>
                     </div>
                 
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="form-group">
                             <label for="">Survey Type </label>
                             <select class="form-control" wire:model="survey_type">
@@ -37,18 +37,18 @@ body {
             </div>
     <div class="card">
             <div class="card-body">
-                <div class="col-md-6">
-                    <div class="col-md-6">
+                <div class="col-md-8">
+                    <div class="col-md-8">
                         <div class="form-group">
                         <label for=""> Question </label>
                         <input type="text" class="form-control" placeholder="Enter the question text" wire:model="question_text">
                     </div>
                         <label for=""> Choose Response type </label>
-                        <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2" >
+                        <div class="action-buttons d-flex justify-content-between bg-white pt-3 pb-6" >
                         <button type="button" class="btn btn-md btn-primary" wire:click="numericAnswer()">NUMERIC </button>
                         <button type="button" class="btn btn-md btn-primary" wire:click="textAnswer()">TEXT </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq1Answer()">MCQ1 </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq2Answer()">MCQ1 </button>
+                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq1Answer()">MCQ </button>
+                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq2Answer()">MCQ (multiple answer) </button>
                         <span class="text-danger">@error('answer_type'){{ $message }}@enderror</span>
                 </div>
             </div>
@@ -56,6 +56,40 @@ body {
     </div>
     @endif
 
+    @if($answerType == 'mcq1')
+    <div class="card">
+            <div class="card-header bg-primary text-white">Input your 4 choices</div>
+            <div class="card-body">                
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for=""> Multiple Choice Question with 1 answer </label>
+                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option1">
+                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option2">
+                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option3">
+                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option4">
+                        </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if($answerType == 'mcq2')
+    <div class="card">
+            <div class="card-header bg-primary text-white">Input your 4 choices</div>
+            <div class="card-body">                
+                <div class="col-md-6">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for=""> Multiple Choice Question with multiple answer </label>
+                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option1">
+                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option2">
+                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option3">
+                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option4">
+                        </div>
+                    </div>
+            </div>
+        </div>
+    @endif
     @if($answerType == 'numeric')
     <div class="step-two">
         <div class="card">
@@ -90,30 +124,37 @@ body {
     </div>
     @endif
 
-    @if($answerType == 'mcq1')
-    <div class="setp-four">
-        <div class="card">
-            <div class="card-header bg-primary text-white">They chose MCQ with 1 choice
-                <div class="card-body">
-                    <div class="col-md-6">
+   
+    @if($answerType == 'noneTemp')
+    <div class="card">
+    <div class="card-header bg-primary text-white"> Total questions (<?php echo $currentQuestion ?>) New Question</div>
+    <div class="card-body">
+                <div class="col-md-8">
+                    <div class="col-md-8">
                         <div class="form-group">
-                            <label for=""> 
-                        </div>
+                        <label for=""> Question </label>
+                        <input type="text" class="form-control" placeholder="Enter the question text" wire:model="question_text">
                     </div>
+                        <label for=""> Choose Response type </label>
+                        <div class="action-buttons d-flex justify-content-between bg-white pt-3 pb-6" >
+                        <button type="button" class="btn btn-md btn-primary" wire:click="numericAnswer()">NUMERIC </button>
+                        <button type="button" class="btn btn-md btn-primary" wire:click="textAnswer()">TEXT </button>
+                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq1Answer()">MCQ </button>
+                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq2Answer()">MCQ (multiple answer) </button>
+                        <span class="text-danger">@error('answer_type'){{ $message }}@enderror</span>
                 </div>
-
             </div>
         </div>
     </div>
     @endif
-    <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2" >
-        @if($currentStep >1)
+    <div class="action-buttons d-flex justify-content-between bg-white pt-5 pb-3" >
+        @if($currentQuestion >1)
             <div>
-                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseStep()">Previous </button>
+                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseQuestion()">(-) </button>
             </div>
         @endif 
-            <button type="button" class="btn btn-md btn-success" wire:click="resetAnswer()">ADD/NEXT </button>
-            <button type="submit" class="btn btn-md btn-primary">Submit </button>
+            <button type="button" class="btn btn-md btn-success" wire:click="increaseQuestion()">(+) </button>
+            <button type="button" class="btn btn-md btn-primary" wire:click="submit()"> Submit </button>
     </div>
 </form>
 </div>

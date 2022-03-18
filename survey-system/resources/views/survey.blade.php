@@ -12,8 +12,12 @@
 </head>
 <body>
     
-    <h1>Yello Slick</h1><hr>
+<button type="button" class="btn btn-md btn-#1EABE4"><h1>Survey.Blade</h1></button>
+
+    <hr>
     @livewire('survey-construction')
     @livewireScripts
 </body>
 </html>
+
+
