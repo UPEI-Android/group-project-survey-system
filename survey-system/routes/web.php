@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SurveyConsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,24 @@ Route::get('/survey-list', [SurveyListController::class, 'index'])->name('survey
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
 
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
+Route::post('/make-survey', [MakeSurveyController::class, 'store']);//这个你是用来干嘛的 存了数据继续跳回这个界面，然后按了完成这个按钮就跳到别的界面，
+Route::get('/adds_store', [MakeSurveyController::class, 'add'])->name('makesurvey2'); 
+Route::post('/adds_store', [MakeSurveyController::class, 'adds_store']);//第二个添加页面处理
+
+//Route::get('/enter-question', [MakeSurveyController::class, 'index'])->name('enterquestion');
+//Route::get('/enter-question', [MakeSurveyController::class, 'store']);
+
+//Route::get('/add', [MakeSurveyController::class, 'add']);
+//Route::get('/list', [MakeSurveyController::class, 'list']);
+
+//Route::get('/adds', [MakeSurveyController::class, 'adds']);//第二个添加页面
+
+
+
 Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings');
 Route::post('/profile-settings', [ProfileSettingsController::class, 'update'])->name('profilesettings');
+Route::post('/profile-settings/changePassword', [ProfileSettingsController::class, 'changePassword'])->name('changePassword');
+// Route::get('/profile-settings/{id}', [ProfileSettingsController::class, 'index2'])->name('profilesettings');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
@@ -46,5 +63,9 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::view("/testing", "SurveyCons");
+Route::view('/survey', 'survey')->name('survey');
+
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
