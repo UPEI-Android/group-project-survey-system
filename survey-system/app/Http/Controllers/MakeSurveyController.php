@@ -1,14 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-// use App\Http\Controllers\Controller;
+
+
+
+use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Survey;
+use Error;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+
 class MakeSurveyController extends Controller
-{
-    public function index () {
+{   
+   
+    
+    public function list ($name) {
+
+        
+        $survey = DB::table('surveys')->where('name', $name)->get()->first();;
+        $survey_id=$survey->id;
+        if(empty($survey_id)){
+            $data = Question::all();
+        }else{
+            $data = Question::where('survey_id',$survey_id)->get();
+        }
+        return view('list_demo',compact('data'));}
+    
+    public function index(){
         return view('make_survey');
     }
     public function update(Request $request){
@@ -44,9 +66,11 @@ class MakeSurveyController extends Controller
             $data2=$question->save();
 
 
+
             }
         }catch(\Exception $e){
             echo $e->getMessage();
         }
       }
+
 }

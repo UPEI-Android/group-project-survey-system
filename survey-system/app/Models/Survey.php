@@ -20,5 +20,6 @@ class Survey extends Model
         'survey_type'
     ];
     //id, name, profiles_id, url,
+
 }
  
