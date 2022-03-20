@@ -9,13 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
-    public $table = 'questions';
+
+    protected $primaryKey="id";
+
     
-    // public $fillable = [
-    //     'id',
-    //     'text',
-    //     'responseType',
-    // ];
-    // protected $primaryKey = 'id';
+    protected $fillable=[
+        'question_text',
+        'answer_type',
+        'answer_form',
+    ];
     public $timestamps = false;
+
+
 }

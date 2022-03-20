@@ -8,11 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Survey extends Model
 {
     use HasFactory;
-    public $fillable = [
-        'id',
-        'name',
+
+    protected $primaryKey="id";
+
+    protected $fillable=[
+        'survey_name',
         'profiles_id',
-        'url'
+        'url',
+        'survey_type',
+        'survey_id',
+        'survey_type'
     ];
-    public $timestamps = false;
+    //id, name, profiles_id, url,
+
 }
+ 

@@ -17,11 +17,16 @@ class CreateResponsesTable extends Migration
         Schema::create('responses', function (Blueprint $table) {
             $table->id();//Id that we aint not gunna use
 
-            $table->foreignId('survey_id')->constrained();
-            $table->foreignId('question_id')->constrained();
+            //$table->foreignId('survey_id')->constrained()->default(0);//Just try to fix this 
+            //$table->foreignId('question_id')->constrained()->default(0);//Just trying to fix this 
+            
+            $table->bigInteger('survey_id')->default(0);//These are temporary just to make the thing working firs
+            $table->bigInteger('question_id')->default(0);//These are temporary just to make the thing working firs
+            
 
-            $table->string('response_text');
-            $table->timestamp('created_at');
+            $table->string('response_text')->nullable();//nullability will be surpassed with validation testing, response will never be null
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('option')->nullable();
 
         });
     }

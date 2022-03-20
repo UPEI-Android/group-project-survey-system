@@ -17,7 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->foreignId('survey_id')->constrained();
             $table->string('text');
-            $table->string('responseType');
+            $table->string('responseType')->nullable();
+            $table->string('options')->nullable();
+
         });
     }
 

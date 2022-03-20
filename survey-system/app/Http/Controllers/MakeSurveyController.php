@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Survey;
@@ -32,40 +33,44 @@ class MakeSurveyController extends Controller
     public function index(){
         return view('make_survey');
     }
-
-
-
-    public function store(Request $request){ 
-
+    public function update(Request $request){
+        // dd($request->input());
         try{
             $survey = new Survey;
-            $survey->name = $request->input('surveyName','');
-            $numberOfQuestion = $request->input('numberOfQuestion','');
+            $survey->name = $request->input('survey_name','');
+            $survey->survey_type = $request->input('survey_type','');
+            $numberOfQuestion = count($request->input('questions',''));
             $profiles_id=Auth::user()->id;
             $survey->profiles_id = $profiles_id;
-            $survey->survey_type = 'Normal';
-    
+            $questions = $request->input('questions','');
+            // dd($survey,$questions);
+            // dd($numberOfQuestion);
             $data1 = $survey->save();
-    
-    
-            for($i=1;$i<=$numberOfQuestion;$i++){
+
+
+            foreach($questions as $item){
+                $optionsText = "";
             $question = new Question;
-            $tem='text'.(string)$i;
-            $tem1='responseType'.(string)$i;
-            $question->text = $request->input($tem,'');
-            $question->responseType = $request->input($tem1,'');
+                if($item['response_type'] == 'mcq'){
+                    foreach($item['options'] as $option){
+                        error_log($option['option']);
+                        $optionsText .= $option['option'].",";
+                    }
+                    $optionsText = rtrim($optionsText, ", ");
+                    $question->options = $optionsText;
+                }
+               
+            $question->text = $item['question_text'];
+            $question->responseType = $item['response_type'];
             $question->survey_id = $survey->id;
             $data2=$question->save();
-           
-            
+
+
+
             }
         }catch(\Exception $e){
             echo $e->getMessage();
         }
-       
-        
-        
-        
-    }
+      }
 
 }
