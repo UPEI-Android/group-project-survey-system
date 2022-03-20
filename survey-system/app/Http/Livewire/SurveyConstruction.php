@@ -10,148 +10,43 @@ use Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider;
 
 class SurveyConstruction extends Component
 {
-    public $survey_name;
-    public $survey_id;
-    public $survey_type;
-    public $profiles_id;
-    public $question_id;
-    public $url;
-    public $question_text;
-    public $answer_type;
-    
-    public $answer_form;
-    public $option=[];
-
-    public $totalQuestions;
-    public $currentQuestion=1;
-    public $answerType;//this is for local use, other answer_type is for database use
-
-    public $arrayForQuestionText;
-    public $arrayForAnswerType;
-    public $arrayForAnswerForm;
-    public $foo;
-
-    public function mount(){
-        $this->answerType='none';
-        $this->currentQuestion=1;
-        $this->totalQuestions=1;
-        $this->foo=true;
+   
+    public $orderProducts = [];
+    public $allProducts = [];
+    public $tempOptions = [];
+   
+    public function mount()
+    {
+        // $this->allProducts = Product::all();
+        $this->questions = [
+            ['response_type' => '', 'question_text' => '', 'options' => [['option_id' => '', 'option' => '']]]
+        ];
+        // $this->tempOptions[] = ['option_id' => '', 'option' => ''];
+    }
+    public function addOption($index)
+    {
+        // dd($index);
+        $this->questions[$index]['options'][] = ['option_id' => '', 'option' => ''];
+    }
+    public function addProduct()
+    {
+        $this->questions[] = ['response_type' => '', 'question_text' => '', 'options' => [['option_id' => '', 'option' => '']]];
+        // $this->tempOptions[] = ['option_id' => '', 'option' => ''];
+    }
+    public function removeOption($index1, $index2)
+    {
+        unset($this->questions[$index1]['options'][$index2]);
+        $this->questions = array_values($this->questions);
+    }
+    public function removeQuestion($index)
+    {
+        unset($this->questions[$index]);
+        $this->questions = array_values($this->questions);
     }
 
     public function render()
     {
+        info($this->orderProducts);
         return view('livewire.survey-construction');
-    }
-
-    public function increaseQuestion(){
-        $this->storeData();
-        $this->currentQuestion++;
-        $this->totalQuestions++;
-        //probably have to store the stuff, make a function to store variables in array
-        $this->resetAnswerActive();
-        $this->answerType='noneTemp';
-    }
-    
-    
-    public function decreaseQuestion(){
-        $this->currentQuestion--;
-        if($this->currentQuestion <= 1){
-            $this->currentQuestion=1;
-        }
-
-    }
-
-    public function numericAnswer(){
-        $this->answerType='numeric';
-        //$this->resetErrorBag();
-        //$this->currentQuestion++;
-        //$this->totalQuestions++;
-    }
-
-    public function textAnswer(){
-
-        $this->answerType='text';
-        //$this->currentQuestion++;
-        //$this->totalQuestions++;
-
-    }
-    public function mcq1Answer(){
-        $this->answerType='mcq1';
-        //$this->currentQuestion++;
-        //$this->totalQuestions++;
-
-
-    }
-    public function mcq2Answer(){
-        $this->answerType='mcq2';
-        //$this->currentQuestion++;
-        //$this->totalQuestions++;
-
-
-    }
-
-    public function resetAnswerActive(){
-        $this->question_text=null;
-        $this->answer_type=null;
-        $this->answer_form=null;
-        //$this->answerType='noneTemp';
-    }
-
-    public function resetAnswerFinal(){
-        $this->reset();
-    }
-
-    public $tempSurveyName;
-    public $tempSurveyType;
-    
-    public function storeData(){
-        if($this->foo==true){//just so this goes in only once
-            $this->tempSurveyName=$this->survey_name;
-            $this->tempSurveyType=$this->survey_type;
-            $this->foo=false;
-        }
-        //Here data will be stored temprarily in an object or array
-        $this->arrayForQuestionText=array(
-            $this->currentQuestion => $this->question_text//this should keep incrementing, so it'll be each question number and its texts
-        );
-        $this->arrayForAnswerType=array(
-            $this->currentQuestion=>$this->answerType
-        );
-        $this->arrayForAnswerForm=array(
-            $this->currentQuestion=>$this->answer_form
-        );
-    }
-
-    public $valuesQuestionsTable=array();
-    public function submit(){
-
-        $valuesSurveysTable=array(
-            "name"=>$this->tempSurveyName,
-            "survey_type"=>$this->tempSurveyType,
-            //$this->url, This will be needed for generating a url to share the survey
-            
-        );
-        
-        
-        for($i = 1; $i<$this->totalQuestions; $i++){
-            $tempValue=$this->arrayForQuestionText[$i];
-            $this->valuesQuestionsTable=array(
-                "text"=>$tempValue,
-                "responseType"=>$this->answerType,
-                
-            );
-        }
-
-        $valuesResponsesTable=array(
-            "response_text"=>$this->answer_form,
-            
-        );
-
-        Survey::insert($valuesSurveysTable);
-        Question::insert($this->valuesQuestionsTable);
-        Response::insert($valuesResponsesTable);
-
-        $this->resetAnswerFinal();
-        $this->answerType='none';
     }
 }

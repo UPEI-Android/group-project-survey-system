@@ -49,6 +49,8 @@
         }
        
     </style>
+        @livewireStyles
+
  </head>
 <body>
 <nav class="navbar navbar-custom" justify-content-center >
@@ -62,8 +64,8 @@
   </div>
 </nav>
   
-  
     @yield('content')
+    @livewireScripts
 
 </body>
 </html>

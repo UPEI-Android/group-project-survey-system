@@ -1,159 +1,119 @@
+
 <div>
-Hello from  livewire
-<style>
-body {
-    background-image: linear-gradient(#1EABE4, #0D4AAF);
-}
-</style>
-<form>
-    @if($answerType == 'none')
-    <div class="step-one">
-        <div class="card">
-            <div class="card-header bg-primary text-white">Survey Name</div>
-            <div class="card-body">
-                <div class="col-md-8">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for=""> Survey Name </label>
-                            <input type="text" class="form-control" placeholder="Enter the name of the survey" wire:model="survey_name">
-                            <span class="text-danger">@error('survey_name'){{ $message }}@enderror</span>
-                        </div>
-                    </div>
-                
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for="">Survey Type </label>
-                            <select class="form-control" wire:model="survey_type">
-                                <option value="" selected>Select Survey Type </option>
-                                <option value="Exploratory"> Exploratory</option>
-                                <option value="Descriptive"> Descriptive</option>
-                                <option value="Causal"> Causal</option>
-                            </select>
-                            <span class="text-danger">@error('survey_type'){{ $message }}@enderror</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    <div class="card">
-            <div class="card-body">
-                <div class="col-md-8">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                        <label for=""> Question </label>
-                        <input type="text" class="form-control" placeholder="Enter the question text" wire:model="question_text">
-                    </div>
-                        <label for=""> Choose Response type </label>
-                        <div class="action-buttons d-flex justify-content-between bg-white pt-3 pb-6" >
-                        <button type="button" class="btn btn-md btn-primary" wire:click="numericAnswer()">NUMERIC </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="textAnswer()">TEXT </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq1Answer()">MCQ </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq2Answer()">MCQ (multiple answer) </button>
-                        <span class="text-danger">@error('answer_type'){{ $message }}@enderror</span>
-                </div>
-            </div>
+    <form action="{{ route('makesurvey') }}" method="POST">
+        @csrf
+        <div class="form-group {{ $errors->has('survey_name') ? 'has-error' : '' }}">
+            Survey name
+            <input type="text" name="survey_name" class="form-control"
+                   value="{{ old('survey_name') }}" required>
+            @if($errors->has('survey_name'))
+                <em class="invalid-feedback">
+                    {{ $errors->first('survey_name') }}
+                </em>
+            @endif
         </div>
-    </div>
-    @endif
+        <div class="form-group {{ $errors->has('customer_email') ? 'has-error' : '' }}">
+            Survey Type
+            <select name="survey_type"
+                                        class="form-control">
+                                    <option value="">-- Choose a survey type --</option>
+                                    <option value="Exploratory">
+                                            Exploratory
+                                        </option>
+                                        <option value="Descriptive">
+                                            Descriptive
+                                        </option>
+                                        <option value="Causal">
+                                        Causal
+                                        </option>
+                                                                         
+                                </select> 
+            @if($errors->has('survey_type'))
+                <em class="invalid-feedback">
+                    {{ $errors->first('survey_type') }}
+                </em>
+            @endif
+        </div>
 
-    @if($answerType == 'mcq1')
-    <div class="card">
-            <div class="card-header bg-primary text-white">Input your 4 choices</div>
-            <div class="card-body">                
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label for=""> Multiple Choice Question with 1 answer </label>
-                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option[1]">
-                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option[2]">
-                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option[3]">
-                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option[4]">
-                        </div>
-                </div>
-            </div>
-        </div>
-    @endif
-    @if($answerType == 'mcq2')
-    <div class="card">
-            <div class="card-header bg-primary text-white">Input your 4 choices</div>
-            <div class="card-body">                
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label for=""> Multiple Choice Question with multiple answer </label>
-                        <input type="text" class="form-control" placeholder="Enter your first choice" wire:model="option[1]">
-                        <input type="text" class="form-control" placeholder="Enter your second choice" wire:model="option[2]">
-                        <input type="text" class="form-control" placeholder="Enter your third choice" wire:model="option[3]">
-                        <input type="text" class="form-control" placeholder="Enter your fourth choice" wire:model="option[4]">
-                        </div>
-                    </div>
-            </div>
-        </div>
-    @endif
-    @if($answerType == 'numeric')
-    <div class="step-two">
         <div class="card">
-            <div class="card-header bg-primary text-white">This is just for you to view, Numeric Answer</div>
-            <div class="card-body">
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label for=""> Numeric Answer </label>
-                        <input type="text" class="form-control" placeholder="Enter numeric answer" wire:model="answer_form">
-                        <span class="text-danger">@error('answer_form'){{ $message }}@enderror</span>
-                    </div>
-                </div>
+            <div class="card-header">
+                All questions
             </div>
-        </div>
-    </div>
-    @endif
-    @if($answerType == 'text')
-    <div class="step-three">
-        <div class="card">
-            <div class="card-header bg-primary text-white">This is just for you to view, Text Answer</div>
-            <div class="card-body">
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label for=""> Text Answer</label>
-                        <textarea class="form-control" cols="2" rows="2" wire:model="answer_form"></textarea>
-                        <span class="text-danger">@error('answer_form'){{ $message }}@enderror</span>
-                    </div>
-            </div>
-        </div>
-    </div>
-    @endif
 
-   
-    @if($answerType == 'noneTemp')
-    <div class="card">
-    <div class="card-header bg-primary text-white"> Question number (<?php echo $totalQuestions?>)  Make a New Question</div>
-    <div class="card-body">
-                <div class="col-md-8">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                        <label for=""> Question </label>
-                        <input type="text" class="form-control" placeholder="Enter the question text" wire:model="question_text">
+            <div class="card-body">
+                <table class="table" id="products_table">
+                    <thead>
+                    <tr>
+                        <th>Response Type</th>
+                        <th>Question Text</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($questions as $index => $question)
+                        <tr>
+                            <td>
+                            <input type="text"
+                                       name="questions[{{$index}}][question_text]"
+                                       class="form-control"
+                                       wire:model="questions.{{$index}}.question_text" />
+                               
+                                @if($question['response_type'] == 'mcq')
+                            <h4>All options</h4>
+                            @foreach ($question['options'] as $index2 => $tempOption)
+                            <input type="text"
+                                       name="questions[{{$index}}][options][{{$index2}}][option]"
+                                       class="form-control"
+                                       wire:model="questions.{{$index}}.options.{{$index2}}.option" />
+                                <a href="#" wire:click.prevent="removeOption({{$index}},{{$index2}})">Delete this option</a>
+                                      @endforeach 
+                                      <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-secondary"
+                            wire:click.prevent="addOption({{$index}})">+ Add Another Option</button>
                     </div>
-                        <label for=""> Choose Response type </label>
-                        <div class="action-buttons d-flex justify-content-between bg-white pt-3 pb-6" >
-                        <button type="button" class="btn btn-md btn-primary" wire:click="numericAnswer()">NUMERIC </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="textAnswer()">TEXT </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq1Answer()">MCQ </button>
-                        <button type="button" class="btn btn-md btn-primary" wire:click="mcq2Answer()">MCQ (multiple answer) </button>
-                        <span class="text-danger">@error('answer_type'){{ $message }}@enderror</span>
+                </div>
+                            @endif
+                            </td>
+                            <td>
+                            <select name="questions[{{$index}}][response_type]"
+                                        wire:model="questions.{{$index}}.response_type"
+                                        class="form-control">
+                                    <option value="">-- Choose a response type --</option>
+                                    <option value="mcq">
+                                            Multiple Choice Question
+                                        </option>
+                                        <option value="text">
+                                            Text Response 
+                                        </option>
+                                        <option value="numeric">
+                                            Numerical Response 
+                                        </option>
+                                  
+                                        
+                                </select> 
+                                </td>
+                            <td>
+                                <a href="#" wire:click.prevent="removeQuestion({{$index}})">Delete</a>
+                            </td>
+                           
+                        </tr>
+                    @endforeach
+                   
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-secondary"
+                            wire:click.prevent="addProduct">+ Add Another Question</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    @endif
-    <div class="action-buttons d-flex justify-content-between bg-white pt-5 pb-3" >
-        @if($currentQuestion >1)
-            <div>
-                <button type="button" class="btn btn-md btn-secondary" wire:click="decreaseQuestion()">(-) </button>
-            </div>
-        @endif 
-            <button type="button" class="btn btn-md btn-success" wire:click="increaseQuestion()">(+) </button>
-            <button type="button" class="btn btn-md btn-primary" wire:click="submit()"> Submit </button>
-    </div>
-</form>
+        <br />
+        <div> 
+            <input class="btn btn-primary" type="submit" value="Create Survey">
+        </div>
+    </form>
 </div>

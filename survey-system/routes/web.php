@@ -13,7 +13,7 @@ use App\Http\Controllers\Auth\LogoutController;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SurveyConsController;
-
+use App\Http\Livewire\SurveyConstruction;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +38,7 @@ Route::get('/survey-list', [SurveyListController::class, 'index'])->name('survey
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
 
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
+Route::post('/make-survey', [MakeSurveyController::class, 'update'])->name('makesurvey');
 Route::get('/profile-settings', [ProfileSettingsController::class, 'index'])->name('profilesettings');
 Route::post('/profile-settings', [ProfileSettingsController::class, 'update'])->name('profilesettings');
 Route::post('/profile-settings/changePassword', [ProfileSettingsController::class, 'changePassword'])->name('changePassword');
@@ -47,10 +48,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
-
+Route::post('/store', [SurveyConsController::class, 'update'])->name('addSurvey');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::view("/testing", "SurveyCons");
+Route::get("/testing", SurveyConstruction::class);
 Route::view('/survey', 'survey')->name('survey');
 
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');

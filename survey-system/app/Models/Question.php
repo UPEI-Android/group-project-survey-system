@@ -17,4 +17,6 @@ class Question extends Model
         'answer_type',
         'answer_form',
     ];
+    public $timestamps = false;
+
 }

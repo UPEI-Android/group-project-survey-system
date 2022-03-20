@@ -15,9 +15,11 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            //$table->foreignId('survey_id')->constrained();uncomment this once figured out
+            $table->foreignId('survey_id')->constrained();
             $table->string('text');
             $table->string('responseType')->nullable();
+            $table->string('options')->nullable();
+
         });
     }
 
