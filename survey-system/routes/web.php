@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SurveyConsController;
 use App\Http\Livewire\SurveyConstruction;
+use App\Http\Controllers\MyUrlController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,3 +58,5 @@ Route::view('/survey', 'survey')->name('survey');
 
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
+Route::get('/surveys/{url}',[MyUrlController::class,'index2']);
+ Route::get('/surveys',[MyUrlController::class,'index2']);
