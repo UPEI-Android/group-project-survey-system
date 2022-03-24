@@ -31,7 +31,8 @@ class MyUrlController extends Controller
 
     public function store(Request $request)
     {
-     return $request->input();
+       
+        return $request->input();
 
        
     }
