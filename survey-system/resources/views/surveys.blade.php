@@ -74,8 +74,8 @@ box-sizing: border-box;
 
 
 <div class="main-bothside">
-         <form action="#" method="post">
-         
+<form class="form-signin" method="POST" action="{{ route('result') }}">
+@csrf 
          <div class="question-info">
     @foreach($questions as $question)
      
@@ -83,33 +83,50 @@ box-sizing: border-box;
   
        <p> {{$question->text}}</p>
         
-       <div class="form-mid-types" id="po">
+       <!-- {{ $loop->index }} -->
       @if($question->responseType == 'numeric')
       
-       
-       <label><input type="text" name="answer1"> </label>
+       <div class="form-mid-types" id="po">
+       <label><input type="text" name="answer{{$question->id}}"  > </label>
        
        @elseif($question->responseType == 'text')
-
-       <input type="text" class="form-control" placeholder="Enter the Answer" >
+       <div class="form-mid-types" id="po">
+       <input type="text"  name="answer{{$question->id}}"class="form-control" placeholder="Enter the Answer" >
       
       
        @elseif($question->responseType == 'mcq')
        
       
-       {{$question->options}}
-       @foreach(explode(',', $question->options) as $fields) 
-      <li> <label><input type="radio" name="answer3">     {{$fields}}  </label> </li>
-@endforeach
-      
        
+<!--      
+       @foreach(explode(',', $question->options) as $fields) 
       
+       <ol> <label><input type="radio" name="{{ $loop->index }}" value="{{ $loop->index }}"> {{$fields}}  </label> </ol>
+        @endforeach -->
+
+
+        <select name="answer{{$question->id}}"
+                                        class="form-control">
+                                        @foreach(explode(',', $question->options) as $fields) 
+                                        <option value="{{$fields}}">{{$fields}}</option>
+                                        @endforeach
+
+                                </select>
+
+
+
+
+<button  name="button" type="submit">
+            Submit
+        </button>
+
        
        @endif
      @endforeach
     
+   
   
-    
+     
   
 
 

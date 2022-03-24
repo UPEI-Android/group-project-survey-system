@@ -60,3 +60,5 @@ Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
 Route::get('/surveys/{url}',[MyUrlController::class,'index2']);
  Route::get('/surveys',[MyUrlController::class,'index2']);
+ Route::post('/result',[MyUrlController::class,'store'])->name('result');;
+ 
