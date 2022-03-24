@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\Profile;
+use App\Models\Survey;
 
 class SurveyListController extends Controller
 {
@@ -20,11 +21,11 @@ class SurveyListController extends Controller
             'allSurveys' => $allSurveys
         ]);
     }
-
-    public function detail(Request $request){
-        $id=$request->input('id', 0);
-        $surveys=DB::table('surveys')->find($id);
-        $questions=DB::table('questions')->where('survey_id', $id)->first();
-        return view('survey_detail', compact('surveys', 'questions'));
+    public function delete($id){
+        DB::table('questions')->where('survey_id',$id)->delete();
+        DB::table('responses')->where('survey_id',$id)->delete();
+        DB::table('surveys')->where('id',$id)->delete();
+        return redirect('survey-list'); 
     }
+
 }

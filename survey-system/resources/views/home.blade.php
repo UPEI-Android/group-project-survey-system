@@ -4,74 +4,8 @@
 
 <html>
 
-<head>
-</head>
-<style>
-    .a {
-        position: absolute;
-        width: 280px;
-        height: 320px;
-        left: 749px;
-        top: 70px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 30px;
-        line-height: 40px;
-    }
 
-    .left {
-        float: left;
-    }
-
-    .b {
-        position: absolute;
-        width: 340px;
-        height: 300px;
-        left: 380px;
-        top: 350px;
-        background-color: #e6e6e6;
-    }
-
-    .c {
-        position: absolute;
-        width: 280px;
-        height: 280px;
-        left: 400px;
-        top: 370px;
-
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 29px;
-    }
-
-    .d {
-        position: absolute;
-        left: 80%;
-        right: 9.95%;
-        top: 5%;
-        bottom: 20%;
-    }
-
-    .e {
-        position: absolute;
-        left: 30%;
-        right: 9.95%;
-        top: 10%;
-        bottom: 20%;
-    }
-
-    .f {
-        position: absolute;
-        left: 80%;
-        right: 9.95%;
-        top: 30%;
-        bottom: 20%;
-    }
-</style>
 
 <body>
 

@@ -12,13 +12,21 @@ class Question extends Model
 
     protected $primaryKey="id";
 
-    
+    public $table = 'questions';
     protected $fillable=[
-        'question_text',
-        'answer_type',
-        'answer_form',
+        'id',
+        'survey_id',
+        'text',
+        'response_type',
+        'options'
     ];
     public $timestamps = false;
+
+    public function responses()
+    {
+        return $this->hasMany('App\Models\Response');
+    }
+
 
 
 }

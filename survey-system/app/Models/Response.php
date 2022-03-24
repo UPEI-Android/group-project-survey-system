@@ -18,5 +18,9 @@ class Response extends Model
     protected $fillable=[
         'answer_form',
     ];
+    public function question()
+    {
+        return $this->belongsTo('App\Models\Question');
+    }
 
 }

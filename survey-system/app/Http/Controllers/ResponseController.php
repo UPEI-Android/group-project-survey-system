@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\Question;
 use App\Models\Response;
-class TemplateController extends Controller
+class ResponseController extends Controller
 {
-    public function index () {
-        return view('template');
-    }
+    
     public function showQuestions($id) {
         $questions = Question::with('responses')->where('questions.survey_id',$id)->get();
-        return view('template', compact('questions'));
+        return view('response', compact('questions'));
     }
 }

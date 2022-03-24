@@ -34,8 +34,11 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist');
+Route::get('delete/{id}','App\Http\Controllers\SurveyListController@delete');
 
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
+// Route::get('/template/{id}','App\Http\Controllers\TemplateController@showQuestions');
+Route::get('/responses/{id}','App\Http\Controllers\ResponseController@showQuestions');
 
 Route::get('/make-survey', [MakeSurveyController::class, 'index'])->name('makesurvey');
 Route::post('/make-survey', [MakeSurveyController::class, 'update'])->name('makesurvey');
