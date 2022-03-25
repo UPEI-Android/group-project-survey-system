@@ -19,5 +19,9 @@ class Response extends Model
         'answer_form',
     ];
     public $timestamps = false;
+    public function question()
+    {
+        return $this->belongsTo('App\Models\Question');
+    }
 
 }
