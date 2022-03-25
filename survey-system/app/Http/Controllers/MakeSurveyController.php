@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\Survey;
+use App\Helpers\Helper;
 use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +38,9 @@ class MakeSurveyController extends Controller
         // dd($request->input());
         try{
             $survey = new Survey;
+            $uniqueGenerator = new Helper;
             $survey->name = $request->input('survey_name','');
+            $survey->url = $uniqueGenerator::generateKey();
             $survey->survey_type = $request->input('survey_type','');
             $numberOfQuestion = count($request->input('questions',''));
             $profiles_id=Auth::user()->id;
@@ -71,6 +74,7 @@ class MakeSurveyController extends Controller
         }catch(\Exception $e){
             echo $e->getMessage();
         }
+        return back();
       }
 
 }

@@ -17,8 +17,9 @@
         <th>id</th>
         <th>Survey Name</th>
         <th>Survey Type</th>
-        <th>Survey Type</th>
+        <th>Survey URL</th>
         <th></th>
+    
         <th></th>
         <th></th>
       </tr>
@@ -29,8 +30,8 @@
         <td>{{$allSurvey->id}}</td>
         <td><a href="$allSurvey->url" style="color:#33ccff;">{{$allSurvey->name}}</a></td>
         <td>{{$allSurvey->survey_type}}</td>
+        <td><a class="link-primary">http://127.0.0.1:8000/surveyRespond/{{$allSurvey->url }}</td>
         <td><a href="{{ url('responses/'.$allSurvey->id) }}" class="link-primary">Show All Responses</a></td>
-        <td><a class="link-primary">{{$allSurvey->url }}/a></td>
         <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
       </tr>
     @endforeach
