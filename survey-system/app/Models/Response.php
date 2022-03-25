@@ -18,6 +18,7 @@ class Response extends Model
     protected $fillable=[
         'answer_form',
     ];
+    public $timestamps = false;
     public function question()
     {
         return $this->belongsTo('App\Models\Question');
