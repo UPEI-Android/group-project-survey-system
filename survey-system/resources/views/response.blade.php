@@ -8,6 +8,8 @@
 <div  style="margin-left: 15vw">
 <h1 class="pageTitle">Responses</h1>
 <a href="{{route('surveylist')}}" class="link-primary" style="font-size: 18px; margin: 0 0 20px 10px">Go back</a>
+<a href="" class="link-primary" style="font-size: 18px; margin: 100px 100px 100px 100px">Export to CSV</a>
+
 
 
 @foreach($questions as $question)
