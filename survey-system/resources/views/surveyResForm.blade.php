@@ -74,7 +74,7 @@ box-sizing: border-box;
 
 
 <div class="main-bothside">
-<form class="form-signin" method="POST" action="{{ route('result') }}">
+<form class="form-signin" method="POST" action="{{ route('submission') }}">
 @csrf 
          <div class="question-info">
            
@@ -88,11 +88,11 @@ box-sizing: border-box;
       @if($question->responseType == 'numeric')
       
        <div class="form-mid-types" id="po">
-       <input type="numeric" name="answer{{$question->id}}" placeholder="Enter the Answer" >
+       <input type="numeric" name="answer-{{$question->id}}" placeholder="Enter the Answer" >
        
        @elseif($question->responseType == 'text')
        <div class="form-mid-types" id="po">
-       <input type="text"  name="answer{{$question->id}}"class="form-control" placeholder="Enter the Answer" >
+       <input type="text"  name="answer-{{$question->id}}"class="form-control" placeholder="Enter the Answer" >
       
       
        @elseif($question->responseType == 'mcq')
@@ -100,7 +100,7 @@ box-sizing: border-box;
   
 
 
-        <select name="answer{{$question->id}}"
+        <select name="answer-{{$question->id}}"
                                         class="form-control">
                                         @foreach(explode(',', $question->options) as $fields) 
                                         <option value="{{$fields}}">{{$fields}}</option>

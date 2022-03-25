@@ -18,5 +18,6 @@ class Response extends Model
     protected $fillable=[
         'answer_form',
     ];
+    public $timestamps = false;
 
 }
