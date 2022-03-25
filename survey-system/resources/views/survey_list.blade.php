@@ -79,7 +79,7 @@
             <form action="/action_page.php" class="form-container">
               <h3> Send This Survey By Email </h3>
               <input type="text" placeholder="Enter Receiver's Email" name="email" required>
-              <button type="submit" class="btn send">Send</button>
+              <button type="submit" class="btn send" onclick="send()">Send</button>
               <button type="button" class="btn cancel" onclick="cancel()">Cancel</button>
             </form>
           </div>
@@ -89,6 +89,9 @@
           }
           function cancel() {
             document.getElementById("sendEmailForm").style.display = "none";
+          }
+          function send(){
+            window.open('mailto:example@example.com?subject=subject&body=body');
           }
           </script>
         <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
