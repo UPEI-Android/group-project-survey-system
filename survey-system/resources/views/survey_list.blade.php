@@ -17,6 +17,7 @@
         <th>id</th>
         <th>Survey Name</th>
         <th>Survey Type</th>
+        <th>Survey Type</th>
         <th></th>
         <th></th>
         <th></th>
@@ -29,7 +30,7 @@
         <td><a href="$allSurvey->url" style="color:#33ccff;">{{$allSurvey->name}}</a></td>
         <td>{{$allSurvey->survey_type}}</td>
         <td><a href="{{ url('responses/'.$allSurvey->id) }}" class="link-primary">Show All Responses</a></td>
-        <td><a class="link-primary">Send This Survey</a></td>
+        <td><a class="link-primary">{{$allSurvey->url }}/a></td>
         <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
       </tr>
     @endforeach

@@ -44,8 +44,8 @@
                 <table class="table" id="products_table">
                     <thead>
                     <tr>
+                    <th>Question Text</th>
                         <th>Response Type</th>
-                        <th>Question Text</th>
                         <th></th>
                     </tr>
                     </thead>
