@@ -1,0 +1,28 @@
+.content {
+    font-family: 'Helvetica Neue';
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+  }
+  
+  .title { 
+    font-weight: bold;
+    color: #5c5c5c;
+  }
+  
+  .symbol {
+    -webkit-text-stroke: 100px white;
+    font-size: 150px;
+    color: #37b20a;
+  }
+  
+  .text { 
+    margin-top: 15px;
+    font-size: 25px;
+    color: #e07202;
+    text-align: center; 
+    font-family: 'avenir';
+    font-weight: lighter;
+  }

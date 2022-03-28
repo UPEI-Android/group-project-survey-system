@@ -28,9 +28,9 @@
     @foreach($allSurveys as $allSurvey)
       <tr>
         <td>{{$allSurvey->id}}</td>
-        <td><a href="$allSurvey->url" style="color:#33ccff;">{{$allSurvey->name}}</a></td>
+        <td>{{$allSurvey->name}}</td>
         <td>{{$allSurvey->survey_type}}</td>
-        <td><a class="link-primary">http://127.0.0.1:8000/surveyRespond/{{$allSurvey->url }}</td>
+        <td><a href="http://127.0.0.1:8000/surveyRespond/{{$allSurvey->url }}" target="_blank" class="link-primary">http://127.0.0.1:8000/surveyRespond/{{$allSurvey->url }}</td>
         <td><a href="{{ url('responses/'.$allSurvey->id) }}" class="link-primary">Show All Responses</a></td>
         <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
       </tr>

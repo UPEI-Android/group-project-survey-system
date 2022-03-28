@@ -58,6 +58,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::get("/testing", SurveyConstruction::class);
 Route::view('/survey', 'survey')->name('survey');
+Route::view('/success', 'success')->name('success');
 
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
