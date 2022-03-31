@@ -74,11 +74,6 @@ box-sizing: border-box;
 
 
 <div class="main-bothside">
-@if(session()->has('message'))
-    <div class="alert alert-success text-center">
-        {{ session()->get('message') }}
-    </div>
-@endif
 <form class="form-signin" method="POST" action="{{ route('submission') }}">
 @csrf 
          <div class="question-info">
