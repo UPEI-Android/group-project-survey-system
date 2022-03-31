@@ -32,7 +32,7 @@
                     <span class="col-md-12 text-center" style="position:absolute;top:17vh;left:0px;font-size:1.5vh;">Number of active surveys</span>
                     <div class="col-md-12 text-center" style="font-size:2rem;position:absolute;top:20vh;left:0px;">{{$activeCount}}</div>
                     </div>
-                    <div id="box3" class="box-part text-center">3</div>
+                    <img src="{{ URL::to('/css/examplegraph.png') }}" class="example"> 
                 </div> 
                 <div class="col-lg-3">
                     <div id="box5" class="box-part-1 text-center">
@@ -43,7 +43,7 @@
                     <span class="col-md-12 text-center" style="position:absolute;top:17vh;left:0px;font-size:1.5vh;">Number of responses from last 7 days</span>
                     <div class="col-md-12 text-center" style="font-size:2rem;position:absolute;top:20vh;left:0px;">{{$responsePast7}}</div>
                     </div>
-                    <div id="box6" class="box-part text-center">6</div>
+                    <!-- <div id="box6" class="box-part text-center">6</div> -->
                 </div>
                
 

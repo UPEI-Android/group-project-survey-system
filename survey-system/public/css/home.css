@@ -12,6 +12,11 @@ span{
   color: #0062cc;
   border-bottom:2px solid #0062cc;
 } */
+.example{
+    margin: 20px 0 0 20px;
+    height: 53.5vh;
+    width: 45vw;
+}
 .userImg{
     position: absolute;
 margin-left: auto;
@@ -23,6 +28,9 @@ top: 14vh;
 }
 .box{
     padding:60px 0px;
+}
+.graph{
+    padding:50vw 0px;
 }
 .welcome{
     position: absolute;
