@@ -43,7 +43,9 @@
         <td><a href="{{ url('deactivateSurvey/'.$allSurvey->id) }}"class="link-primary">Deactivate</a></td>
         @endif
         
+
         <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
+        
       </tr>
     @endforeach
     </tbody>

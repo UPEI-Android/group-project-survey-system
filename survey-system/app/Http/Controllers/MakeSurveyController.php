@@ -74,7 +74,7 @@ class MakeSurveyController extends Controller
         }catch(\Exception $e){
             echo $e->getMessage();
         }
-        return back();
+        return back()->with('message', 'Successully created the survey! ');
       }
 
 }

@@ -9,7 +9,7 @@
 
 <body>
 
-    <div style="margin-left: 150px">
+    <div class = "abc">
         <h1 class="pageTitle">Home</h1>
         <div class="container-fluid">
 
