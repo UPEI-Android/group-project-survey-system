@@ -38,6 +38,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist');
 Route::get('/export/{id}', [SurveyListController::class, 'exportToCSV'])->name('export');
 Route::get('delete/{id}','App\Http\Controllers\SurveyListController@delete');
+Route::get('activateSurvey/{id}','App\Http\Controllers\SurveyListController@activateSurvey');
+Route::get('deactivateSurvey/{id}','App\Http\Controllers\SurveyListController@deactivateSurvey');
 
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
 // Route::get('/template/{id}','App\Http\Controllers\TemplateController@showQuestions');

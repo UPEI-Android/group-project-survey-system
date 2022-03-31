@@ -31,7 +31,14 @@ class SurveyListController extends Controller
         DB::table('surveys')->where('id',$id)->delete();
         return redirect('survey-list'); 
     }
-
+    public function activateSurvey($id) {
+         Survey::where('id',$id)->update(['isActive'=>1]);
+         return back();
+    }
+    public function deactivateSurvey($id) {
+        Survey::where('id',$id)->update(['isActive'=>0]);
+        return back();
+   }
     /**
      * this function creates a csv file of questions and responses of a given survey id.
      * @param id of the survey
