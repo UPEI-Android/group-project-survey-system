@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SurveyConsController;
 use App\Http\Livewire\SurveyConstruction;
 use App\Http\Controllers\MyUrlController;
+use App\Http\Controllers\ShareLink;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,5 +66,9 @@ Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
 Route::get('/surveyRespond/{url}',[MyUrlController::class,'index2']);
  Route::get('/surveys',[MyUrlController::class,'index2']);
+
+ Route::post('/submit',[MyUrlController::class,'store'])->name('submission');;
+ 
+ Route::get('/sharelink/{id}', [ShareLink::class,'link']);
  Route::post('/submit',[MyUrlController::class,'store'])->name('submission');
  
