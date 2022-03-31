@@ -36,6 +36,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/survey-list', [SurveyListController::class, 'index'])->name('surveylist');
+Route::get('/export/{id}', [SurveyListController::class, 'exportToCSV'])->name('export');
 Route::get('delete/{id}','App\Http\Controllers\SurveyListController@delete');
 
 Route::get('/template', [TemplateController::class, 'index'])->name('template');
@@ -59,11 +60,15 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::get("/testing", SurveyConstruction::class);
 Route::view('/survey', 'survey')->name('survey');
+Route::view('/success', 'success')->name('success');
 
 Route::get('/logout',[LogoutController::class,'index'])->name('logout');
 
 Route::get('/surveyRespond/{url}',[MyUrlController::class,'index2']);
  Route::get('/surveys',[MyUrlController::class,'index2']);
+
  Route::post('/submit',[MyUrlController::class,'store'])->name('submission');;
  
  Route::get('/sharelink/{id}', [ShareLink::class,'link']);
+ Route::post('/submit',[MyUrlController::class,'store'])->name('submission');
+ 

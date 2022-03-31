@@ -5,6 +5,11 @@
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
+@if(session()->has('message'))
+    <div class="alert alert-success text-center">
+        {{ session()->get('message') }}
+    </div>
+@endif
 <head>
     <!-- <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

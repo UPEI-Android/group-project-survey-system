@@ -42,3 +42,25 @@ body {
   padding: 0px 100px;
   color: pink
 }
+
+@media only screen and (max-width:767px) {
+  .sidenav {
+    height: 100%;
+    width: 14%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #12187D;
+    overflow-x: hidden;
+    padding-top: 10px;
+  }
+  
+  .sidenav a {
+    padding: 6px 0px 6px 5px;
+    text-decoration: none;
+    font-size: 1.3vw;
+    color: #FFFFFF;
+    display: block;
+  }
+}
