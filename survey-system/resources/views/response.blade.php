@@ -8,6 +8,7 @@
 <div  style="margin-left: 15vw">
 <h1 class="pageTitle">Responses</h1>
 <a href="{{route('surveylist')}}" class="link-primary" style="font-size: 18px; margin: 0 0 20px 10px">Go back</a>
+<a href="{{url('export/'.$survey_id)}}" class="link-primary" style="font-size: 18px; margin: 0 0 20px 10px">Export</a>
 
 
 @foreach($questions as $question)

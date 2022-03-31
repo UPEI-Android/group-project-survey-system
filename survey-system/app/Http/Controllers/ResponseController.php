@@ -14,6 +14,10 @@ class ResponseController extends Controller
     
     public function showQuestions($id) {
         $questions = Question::with('responses')->where('questions.survey_id',$id)->get();
-        return view('response', compact('questions'));
+        //pass the survey id to the response view
+        return view('response',[
+            'questions' => $questions,
+            'survey_id' => $id
+        ]);
     }
 }
