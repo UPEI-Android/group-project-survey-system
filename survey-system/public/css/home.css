@@ -98,3 +98,25 @@ top: 14vh;
 .fa{
      color:#4183D7;
 }
+
+.abc{
+    margin-left: 150px
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+    [class*="col-"] {
+      width: 100%;
+   }
+
+}
+@media only screen and (max-width:480px) {
+
+
+ [class*="col-"] {
+      width: 100%;
+   }
+   .abc{
+    margin-left: 40px
+}
+    
+}
+  

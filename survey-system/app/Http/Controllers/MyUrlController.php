@@ -43,7 +43,7 @@ class MyUrlController extends Controller
                 $response->save();
             }
         }
-        return redirect()->to('success');;
+        return back()->with('message', 'Thank you! Your answer has been received!');
 
        
     }
