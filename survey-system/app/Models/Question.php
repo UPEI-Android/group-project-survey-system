@@ -9,13 +9,24 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+
+    protected $primaryKey="id";
+
     public $table = 'questions';
-    
-    // public $fillable = [
-    //     'id',
-    //     'text',
-    //     'responseType',
-    // ];
-    // protected $primaryKey = 'id';
+    protected $fillable=[
+        'id',
+        'survey_id',
+        'text',
+        'response_type',
+        'options'
+    ];
     public $timestamps = false;
+
+    public function responses()
+    {
+        return $this->hasMany('App\Models\Response');
+    }
+
+
+
 }

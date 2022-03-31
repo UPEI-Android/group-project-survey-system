@@ -1,0 +1,10 @@
+name,profile_id,survey_type,isActive
+SurveyTest,,Exploratory,0
+"Name of the survey",,Descriptive,0
+"Name of the survey",,Descriptive,0
+Finance,,Causal,0
+NewSurvey,,Causal,0
+SomethingNew,,Descriptive,0
+anySurve,,Descriptive,0
+Animal1,,Causal,0
+hhhhhdddd,,Descriptive,0

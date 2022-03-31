@@ -8,32 +8,46 @@
 <h1 class="pageTitle" >Survey List</h1>
 
 <div class="container">
-<div style="margin-left: 100px">
-  <h2>Survey List</h2>     
+<div >
   <form action="/action_page.php">  
-  <table class="table">
+  <table style="margin-top: 150px" class="btn-light table table-hover">
     <thead>
       <tr>
-        <th></th>
         <th>id</th>
-        <th>name</th>
-        <th>url</th>
+        <th>Survey Name</th>
+        <th>Survey Type</th>
+        <th>Active</th>
+        <th>Survey URL</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
     @foreach($allSurveys as $allSurvey)
       <tr>
-      <div class="form-check">
-        <td><input type="checkbox" class="form-check-input" id="check1" name="option1" value="something"></td>
-        </div>
         <td>{{$allSurvey->id}}</td>
-        <td><a href="{{$allSurvey->url}}" style="color:#33ccff;">{{$allSurvey->name}}</a></td>
-        <td>{{$allSurvey->url}}</td>
+        <td>{{$allSurvey->name}}</td>
+        <td>{{$allSurvey->survey_type}}</td>
+        @if($allSurvey->isActive == 0)
+        <td>No</td> 
+        @else
+        <td>Yes</td>
+        @endif
+        <td><a href="http://127.0.0.1:8000/surveyRespond/{{$allSurvey->url }}" target="_blank" class="link-primary">http://127.0.0.1:8000/surveyRespond/{{$allSurvey->url }}</td>
+        <td><a href="{{ url('responses/'.$allSurvey->id) }}" class="link-primary">Show All Responses</a></td>
+        @if($allSurvey->isActive == 0)
+        <td><a href="{{ url('activateSurvey/'.$allSurvey->id) }}"class="link-primary">Activate</a></td>
+        @else
+        <td><a href="{{ url('deactivateSurvey/'.$allSurvey->id) }}"class="link-primary">Deactivate</a></td>
+        @endif
+        
+        <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
       </tr>
     @endforeach
     </tbody>
   </table>
-  <button type="submit" class="btn btn-primary mt-3">Delete</button>
   </form>
   </div>
   </div>
