@@ -88,11 +88,12 @@ box-sizing: border-box;
       @if($question->responseType == 'numeric')
       
        <div class="form-mid-types" id="po">
-       <input type="numeric" name="answer-{{$question->id}}" placeholder="Enter the Answer" >
+       <input type="numeric" class="form-control"  name="answer-{{$question->id}}" placeholder="Enter the Answer" required>
+    </div>
        
        @elseif($question->responseType == 'text')
        <div class="form-mid-types" id="po">
-       <input type="text"  name="answer-{{$question->id}}"class="form-control" placeholder="Enter the Answer" >
+       <input type="text"  name="answer-{{$question->id}}" class="form-control" placeholder="Enter the Answer" required >
       
       
        @elseif($question->responseType == 'mcq')
@@ -113,7 +114,7 @@ box-sizing: border-box;
        @endif
      @endforeach
      <input type="hidden" name="Survey_id" value="{{$question->survey_id}}" id="master">
-   <button  name="button" type="submit">
+   <button  name="button" type="submit" class="btn btn-primary">
             Submit
         </button>
   
