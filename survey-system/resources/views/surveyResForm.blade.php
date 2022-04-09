@@ -93,7 +93,7 @@ box-sizing: border-box;
        
        @elseif($question->responseType == 'text')
        <div class="form-mid-types" id="po">
-       <input type="number"  name="answer-{{$question->id}}" class="form-control" placeholder="Enter the Answer" required >
+       <input type="text"  name="answer-{{$question->id}}" class="form-control" placeholder="Enter the Answer" required >
       
       
        @elseif($question->responseType == 'mcq')
