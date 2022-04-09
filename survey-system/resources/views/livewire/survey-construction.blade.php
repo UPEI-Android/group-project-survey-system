@@ -69,7 +69,7 @@
                                       @endforeach 
                                       <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-sm btn-secondary"
+                    <button class="btn btn-sm btn-secondary" style="height:auto;width:auto;"
                             wire:click.prevent="addOption({{$index}})">+ Add Another Option</button>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                                 </select> 
                                 </td>
                             <td>
-                                <a href="#" wire:click.prevent="removeQuestion({{$index}})">Delete</a>
+                                <a href="#" wire:click.prevent="removeQuestion({{$index}})" class="link-danger">Delete</a>
                             </td>
                            
                         </tr>
@@ -105,15 +105,15 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <button class="btn btn-sm btn-secondary"
+                        <button class="btn btn-sm btn-secondary"  style="height:auto;width:auto;"
                             wire:click.prevent="addProduct">+ Add Another Question</button>
                     </div>
                 </div>
             </div>
         </div>
         <br />
-        <div> 
-            <input class="btn btn-primary" type="submit" value="Create Survey">
+        <div class="col-md-12  text-right">
+            <input class="btn btn-primary" style="height:auto;width:auto;" type="submit" value="Create Survey">
         </div>
     </form>
 </div>
