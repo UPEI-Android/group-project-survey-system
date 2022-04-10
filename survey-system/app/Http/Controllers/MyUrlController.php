@@ -17,12 +17,25 @@ class MyUrlController extends Controller
     $questions=DB::table('questions')->where('survey_id', $id)->get();
    
     $response=DB::table('questions')->where('survey_id', $id)->get();
-
+    
+    $activation=DB::table('surveys')->where('url', $url)->value('isActive');
+    
+    
+    
     $name=DB::table('surveys')->where('url', $url)->value('name');
     
-    
+    if($activation==1)
+    {
 
     return view('surveyResForm', compact('response', 'questions','name'));
+
+    }
+    else
+    {
+
+
+        return view('inactiveSurvey');
+    }
     // return view('survey', [
     //     'questions ' => $questions,
     //     'response' => $response

@@ -22,6 +22,7 @@
         <th></th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -43,7 +44,9 @@
         <td><a href="{{ url('deactivateSurvey/'.$allSurvey->id) }}"class="link-primary">Deactivate</a></td>
         @endif
         
+        <td><a href="{{ url('sharelink/'.$allSurvey->id) }} "class="link-share">Share Link</a></td>
         <td><a href="{{ url('delete/'.$allSurvey->id) }}" class="link-danger">Delete</a></td>
+        
       </tr>
     @endforeach
     </tbody>
