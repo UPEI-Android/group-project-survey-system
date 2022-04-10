@@ -31,7 +31,7 @@
     
         <a href="{{route('home')}}">Home</a>
         <a href="{{route('surveylist')}}">Survey List</a>
-        <a href="{{route('template')}}">Template Survey</a>
+ 
         <a href="{{route('makesurvey')}}">Make Survey</a>
         <a href="{{route('profilesettings')}}">Profile Settings</a>
         <a href="{{ route('logout') }}"> Logout </a>
