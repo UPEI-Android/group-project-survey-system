@@ -18,6 +18,11 @@ class SurveyListController extends Controller
 {
     public function index (){
         $user = Auth::user();
+        if(!$user){
+            Session::flash('alert', 'User is not authenticated');
+            return redirect()->route('login');
+        }
+        $user = Auth::user();
         $userId = $user->id;
         $allSurveys = DB::table('surveys')->where('profiles_id',$userId)->get();
         return view('survey_list', [

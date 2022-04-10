@@ -3,7 +3,7 @@
     <form action="{{ route('makesurvey') }}" method="POST">
         @csrf
         <div class="form-group {{ $errors->has('survey_name') ? 'has-error' : '' }}">
-            Survey name
+            Item name
             <input type="text" name="survey_name" class="form-control"
                    value="{{ old('survey_name') }}" required>
             @if($errors->has('survey_name'))
@@ -13,18 +13,18 @@
             @endif
         </div>
         <div class="form-group {{ $errors->has('customer_email') ? 'has-error' : '' }}">
-            Survey Type
+            Item Type
             <select name="survey_type"
                                         class="form-control">
                                     <option value="">-- Choose a survey type --</option>
-                                    <option value="Exploratory">
-                                            Exploratory
+                                    <option value="Demographic">
+                                            Demographic
                                         </option>
-                                        <option value="Descriptive">
-                                            Descriptive
+                                        <option value="Quiz">
+                                            Quiz
                                         </option>
-                                        <option value="Causal">
-                                        Causal
+                                        <!-- <option value="Causal">
+                                        Causal -->
                                         </option>
                                                                          
                                 </select> 
@@ -37,14 +37,14 @@
 
         <div class="card">
             <div class="card-header">
-                All questions
+                All items
             </div>
 
             <div class="card-body">
                 <table class="table" id="products_table">
                     <thead>
                     <tr>
-                    <th>Question Text</th>
+                    <th>Item Text</th>
                         <th>Response Type</th>
                         <th></th>
                     </tr>

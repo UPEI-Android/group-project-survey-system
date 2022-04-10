@@ -39,7 +39,7 @@ letter-spacing: 5px;
 
 <div class="main-bothside">
 <h1 class="header-custom">
-        The survey is currently deactivated
+        This survey is not active at the moment
 </h1>
 
 
