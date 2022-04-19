@@ -16,6 +16,9 @@ use App\Models\Response;
 
 class SurveyListController extends Controller
 {
+     /**
+     * This function is used to help the survey list page to display all surveys created by the logged in user.
+     */
     public function index (){
         $user = Auth::user();
         if(!$user){
@@ -30,12 +33,17 @@ class SurveyListController extends Controller
             'allSurveys' => $allSurveys
         ]);
     }
+    /**
+     * This feature is used to help users delete surveys they have created. 
+     * This function also deletes all questions and responses contained in the deleted survey.
+     */
     public function delete($id){
         DB::table('questions')->where('survey_id',$id)->delete();
         DB::table('responses')->where('survey_id',$id)->delete();
         DB::table('surveys')->where('id',$id)->delete();
         return redirect('survey-list'); 
     }
+
     public function activateSurvey($id) {
          Survey::where('id',$id)->update(['isActive'=>1]);
          return back();

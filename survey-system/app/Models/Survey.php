@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+/**
+ * This model mobilizes the elements in survey table.
+ */
 class Survey extends Model
 {
     use HasFactory;
