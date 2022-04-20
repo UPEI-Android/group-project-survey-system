@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+/**
+  * This function simply return the survey associated with the requested survey id.
+  */
 class ShareLink extends Controller
 {
     
@@ -14,12 +16,10 @@ class ShareLink extends Controller
     {
        
         
-     $data = DB::table('surveys')->where('id', $id)->value('url');
-        // $data = DB::table('surveys')::find($id);
+     $data = DB::table('surveys')->where('id', $id)->value('url');// gets the survey url belonging to a specific survey id.
+       
        
     return view('sharelink', compact('data'));
-        // return view('sharelink')->with('url');
-        //  return view('user_detail')->with('data', $user_detail);
        
     }
 
