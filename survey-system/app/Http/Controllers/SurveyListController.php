@@ -46,6 +46,7 @@ class SurveyListController extends Controller
    }
     /**
      * this function creates a csv file of questions and responses of a given survey id.
+     * Bu using a 2d array and implementing a map
      * @param id of the survey
      */
     public function exportToCSV($id){
