@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * This function is using the Eloquent to define the relationship between the question table
+ * and survey table. The relationship in this is one to many. So We build queries through 
+ * response model and question model
+ */
 class Response extends Model
 {
     use HasFactory;
@@ -21,6 +26,7 @@ class Response extends Model
     public $timestamps = false;
     public function question()
     {
+        //child models
         return $this->belongsTo('App\Models\Question');
     }
 
