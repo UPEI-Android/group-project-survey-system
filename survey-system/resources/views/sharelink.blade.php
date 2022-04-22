@@ -188,8 +188,11 @@ letter-spacing: 5px;
 
 <script>
 var copiedLink = '';
+/**
+  * This function copies the input in the text input to clipboard  
+  */
     function copyToClipboard(element, btnElem) {
-        var $temp = $("<input>");
+        var $temp = $("<input>"); // stores the value from the input tag.
         $("body").append($temp);
         $temp.val($(element).val()).select();
         document.execCommand("copy");
@@ -199,24 +202,30 @@ var copiedLink = '';
             $(btnElem).html(`<i class="far fa-clipboard"> </i> `);
         }, 2000);
     }
-    $(document).ready(function() {
+    $(document).ready(function()
+     {
         copiedLink = $('#share_url').val();
        
-        $('#shareWithTwitter').click(function () {
+        $('#shareWithTwitter').click(function () // make a popup for twitter with the link of survey passed to it.
+        {
         window.open("https://twitter.com/intent/tweet?url=" + copiedLink);
     });
-    $('#shareWithFb').click(function () {
+    $('#shareWithFb').click(function () // make a popup for facebook with the link of survey passed to it.
+    {
         window.open("https://www.facebook.com/sharer/sharer.php?u=" + copiedLink, 'facebook-share-dialog', "width=626, height=436");
     });
-    $('#shareWithFb').click(function () {
+    $('#shareWithFb').click(function () 
+    {
         window.open("https://www.facebook.com/sharer/sharer.php?u=" + copiedLink, 'facebook-share-dialog', "width=626, height=436");
     });
-    $('#shareWithMail').click(function () {
+    $('#shareWithMail').click(function () // make a popup for gmail with the link of survey passed to it.
+    {
         var formattedBody = "This is survey link: " + (copiedLink);
         var mailToLink = "mailto:?subject= " + " Survey link&body=" + encodeURIComponent(formattedBody);
         window.location.href = mailToLink;
     });
-    $('#shareWithWhatsapp').click(function () {
+    $('#shareWithWhatsapp').click(function () // make a popup for whatsapp with the link of survey passed to it.
+    {
         var win = window.open('https://api.whatsapp.com/send?text=' + copiedLink, '_blank');
         win.focus();
     });
